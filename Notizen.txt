@@ -1,0 +1,2 @@
+Config in Vagrant bearbeiten:
+sudo sed -i 's/restrict -4 default kod notrap nomodify nopeer noquery limited/restrict default kod nomodify notrap nopeer noquery/g' etc/ntp.conf
