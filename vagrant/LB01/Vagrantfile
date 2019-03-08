@@ -1,4 +1,6 @@
+#LB01 TeamSpeak Server + Überwachungs Server
 
+  #TeamSpeak Server
 Vagrant.configure(2) do |config|
   config.vm.box = "generic/ubuntu1804"
   config.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
@@ -45,6 +47,35 @@ config.vm.provision "shell", inline: <<-SHELL
 
     #Portforwarding auf Virtualbox einrichten
     #Firewallport auf Host öffnen
+SHELL
+end
+
+#Überwachungs Server
+Vagrant.configure(2) do |config|
+config.vm.box = "generic/ubuntu1804"
+config.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
+config.vm.synced_folder ".", "/var/www/html"
+config.vm.provider "virtualbox" do |vb|
+vb.memory = "512"
+end
+
+#Mit diesem Schritt bringen wir die VM auf den neusten Stand
+config.vm.provision "shell", inline: <<-SHELL
+# Update Packages vom lokalen Server holen
+sudo apt-get update
+sudo apt-get upgrade
+SHELL
+
+#Nach dem aktualisieren muss die VM reloaded werden,
+#um einen möglichen reboot nach dem aktualisieren durchzuführen
+config.vom.provision :reload
+config.vm.provision "shell", inline: <<-SHELL
+#Firwall
+sudo ufw allow 22/tcp
+sudo ufw allow 123/udp
+sudo ufw -f enable
+
+#TeamSpeak Installieren
 
 SHELL
 end
