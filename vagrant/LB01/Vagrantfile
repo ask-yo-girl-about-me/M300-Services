@@ -18,7 +18,7 @@ SHELL
 
 #Nach dem aktualisieren muss die VM reloaded werden,
 #um einen möglichen reboot nach dem aktualisieren durchzuführen
-config.vom.provision :reload
+config.vm.provision :reload
 config.vm.provision "shell", inline: <<-SHELL
   #Firwall
   sudo ufw allow 22/tcp
