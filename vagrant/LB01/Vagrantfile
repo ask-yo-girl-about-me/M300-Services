@@ -9,7 +9,7 @@ end
 
 #Mit diesem Schritt bringen wir die VM auf den neusten Stand
 config.vm.provision "shell", inline: <<-SHELL
-  # Packages vom lokalen Server holen
+  # Update Packages vom lokalen Server holen
   sudo apt-get update
   sudo apt-get upgrade
 SHELL
@@ -18,6 +18,12 @@ SHELL
 #um einen möglichen reboot nach dem aktualisieren durchzuführen
 config.vom.provision :reload
 config.vm.provision "shell", inline: <<-SHELL
+  #Firwall
+  sudo ufw allow 22/tcp
+  sudo ufw allow 123/udp
+  sudo ufw -f enable
+  #TeamSpeak Installieren
+  
 
 SHELL
 end
