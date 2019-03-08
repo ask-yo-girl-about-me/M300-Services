@@ -23,7 +23,28 @@ config.vm.provision "shell", inline: <<-SHELL
   sudo ufw allow 123/udp
   sudo ufw -f enable
   #TeamSpeak Installieren
-  
+    #Packet von Teamspeak herunterladen von einer Mirrorseite und dann gleich entpacken
+    cd /tmp
+    wget http://dl.4players.de/ts/releases/3.6.1/teamspeak3-server_linux_amd64-3.6.1.tar.bz2
+    tar -xjf teamspeak3-server_linux_amd64-3.6.1.tar.bz2 -C /usr/local/bin/
+    rm teamspeak3-server_linux_amd64-3.6.1.tar.bz2
+    cd
+    #In das Verzeichnis /usr/local/bin/ wechseln
+    cd /usr/local/bin/
+
+    #Vor dem start müssen noch folgende Files von Hand angelegt werden
+    ./ts3server createinifile=1
+    touch query_ip_blacklist.txt query_ip_whitelist.txt
+
+    #Eintrag im .ini File anpassen
+    #Damit die Installation erfolgreich durchläuft, muss in der Datei ts3server.ini die untere Einstellung von 0 auf 1 gesetzt werden.
+    license_accepted=1
+
+    #Starten des Dienstes bzw. des Servers
+    ./ts3server_startscript.sh start inifile=ts3server.ini
+
+    #Portforwarding auf Virtualbox einrichten
+    #Firewallport auf Host öffnen
 
 SHELL
 end
