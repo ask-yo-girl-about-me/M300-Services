@@ -14,7 +14,7 @@ Dazu installiere ich Munin. Munin ist eine umfassende und sehr einfache zu bedie
 
 
 ### Link Definition
-[1]: Lernjournal
+[1]: https://docs.google.com/document/d/1M-aswL3k4uI-_MYO8RLX7ExAFEzVJkUoqjAOLj9gtyY/edit
 [2]: https://guides.github.com/features/mastering-markdown/
 [3]: https://bscw.tbz.ch/bscw/bscw.cgi/25833849
 [4]: Mein Repository
