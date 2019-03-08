@@ -1,10 +1,11 @@
 # LB01 von Leandro Götzer
-
+---
 ## Auftrag
+---
 Unser Auftrag ist es, eine VM automatisiert aufzusetzten mit einem Vagrant File.
 Dazu müssen wir Services aussuchen die wir installieren und konfigurieren mitels Vagrant File.
 
-### Meine Idee
+### Meine Idee für die LB01
 Ich will zwei Server Aufsetzten.
 Als erster Server dachte ich mir mache ich einen TeamSpeak Server.
 Da ich TeamSpeak kenne, finde ich dies eine gute Idee.
@@ -30,3 +31,15 @@ Dieses Dokument wurde mit [Markdown][2] geschrieben
 * [Mein Repository][4]
 * [TeamSpeak Installation][5]
 * [Munin Installation][6]
+
+##Vorbereitung
+---
+-
+
+##Installation
+---
+-
+
+##Testing
+---
+-
