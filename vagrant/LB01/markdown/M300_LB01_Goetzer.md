@@ -17,17 +17,12 @@ Dazu installiere ich Munin. Munin ist eine umfassende und sehr einfache zu bedie
 [1]: https://docs.google.com/document/d/1M-aswL3k4uI-_MYO8RLX7ExAFEzVJkUoqjAOLj9gtyY/edit
 [2]: https://guides.github.com/features/mastering-markdown/
 [3]: https://bscw.tbz.ch/bscw/bscw.cgi/25833849
-[4]: Mein Repository
-[5]: TeamSpeak
-[6]: Munin
+[4]: https://github.com/ask-yo-girl-about-me/M300-Services.git
+[5]: https://wiki.ubuntuusers.de/TeamSpeak-Server/
+[6]: https://wiki.ubuntuusers.de/Munin/
 
-Link zur [TBZ Webseite][1]
-
-[Link zur TBZ Webseite](http://www.tbz.ch)
-
-Alle Unterlagen befinden sich im [BSCW-M300][3] Folder. Noch mehr Informationen finden sie auf der [TBZ][1] Homepage.
+Alle Unterlagen befinden sich im [BSCW-M300][3] Folder. Noch mehr Informationen finden sie im [Lernjournal][1] vom M300.
 Dieses Dokument wurde mit [Markdown][2] geschrieben
-
 
 ### Nützliche Links
 * [TBZ][1]
