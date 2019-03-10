@@ -27,15 +27,15 @@ Vagrant.configure(2) do |config|
 
 #TeamSpeak Installation
 #Mit diesem Schritt bringen wir die VM auf den neusten Stand
-ts.vm.provision "shell", inline: <<-SHELL
+teamspeak.vm.provision "shell", inline: <<-SHELL
   #Update Packages vom lokalen Server holen
   sudo apt-get update
   sudo apt-get upgrade -y
   SHELL
 #Nach dem aktualisieren muss die VM reloaded werden,
 #um einen möglichen reboot nach dem aktualisieren durchzuführen
-  ts.vm.provision :reload
-  ts.vm.provision "shell", inline: <<-SHELL
+  teamspeak.vm.provision :reload
+  teamspeak.vm.provision "shell", inline: <<-SHELL
     #Firwall
     sudo ufw allow 22/tcp
     sudo ufw allow 123/udp
