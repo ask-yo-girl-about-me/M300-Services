@@ -1,60 +1,60 @@
 #LB01 TeamSpeak Server + Überwachungs Server
 
-  #TeamSpeak Server
+#VB Einrichtung
 Vagrant.configure(2) do |config|
   config.vm.box = "generic/ubuntu1804"
   config.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
   config.vm.synced_folder ".", "/var/www/html"
-config.vm.provider "virtualbox" do |vb|
-  vb.name = "TeamSpeak-Server"
-  vb.memory = "512"
+
+  #TeamSpeak
+  config.vm.define "TeamSpeak" do |ts|
+  ts.vm.provider "virtualbox"
+  ts.name = "TeamSpeak-Server"
+  ts.memory = "512"
+  end
+
+  #Ueberwachung
+  config.vm.define "Ueberwachung" do |uw|
+  uw.vm.provider "virtualbox"
+  uw.name = "TeamSpeak-Server"
+  uw.memory = "512"
+  end
 end
 
-#Mit diesem Schritt bringen wir die VM auf den neusten Stand
-config.vm.provision "shell", inline: <<-SHELL
-  # Update Packages vom lokalen Server holen
-  sudo apt-get update
-  sudo apt-get upgrade -y
-SHELL
+#TeamSpeak Installation
+  #Mit diesem Schritt bringen wir die VM auf den neusten Stand
+    ts.vm.provision "shell", inline: <<-SHELL
+  #Update Packages vom lokalen Server holen
+    sudo apt-get update
+    sudo apt-get upgrade -y
+    SHELL
 
-#Nach dem aktualisieren muss die VM reloaded werden,
-#um einen möglichen reboot nach dem aktualisieren durchzuführen
-config.vm.provision :reload
-config.vm.provision "shell", inline: <<-SHELL
+  #Nach dem aktualisieren muss die VM reloaded werden,
+  #um einen möglichen reboot nach dem aktualisieren durchzuführen
+    ts.vm.provision :reload
+    ts.vm.provision "shell", inline: <<-SHELL
   #Firwall
-  sudo ufw allow 22/tcp
-  sudo ufw allow 123/udp
-  sudo ufw -f enable
-SHELL
+    sudo ufw allow 22/tcp
+    sudo ufw allow 123/udp
+    sudo ufw -f enable
+    SHELL
 end
 
-#Damit die zweite VM auch eingerichtet werden kann
-config.vm.provision :reload
+#Ueberwachung Installation
+  #Mit diesem Schritt bringen wir die VM auf den neusten Stand
+    uw.vm.provision "shell", inline: <<-SHELL
+  #Update Packages vom lokalen Server holen
+    sudo apt-get update
+    sudo apt-get upgrade -y
+    SHELL
 
-#Überwachungsserver
-Vagrant.configure(2) do |config|
-  config.vm.box = "generic/ubuntu1804"
-  config.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
-  config.vm.synced_folder ".", "/var/www/html"
-config.vm.provider "virtualbox" do |vb|
-  vb.name = "TeamSpeak-Server"
-  vb.memory = "512"
-end
-
-#Mit diesem Schritt bringen wir die VM auf den neusten Stand
-config.vm.provision "shell", inline: <<-SHELL
-  # Update Packages vom lokalen Server holen
-  sudo apt-get update
-  sudo apt-get upgrade -y
-SHELL
-
-#Nach dem aktualisieren muss die VM reloaded werden,
-#um einen möglichen reboot nach dem aktualisieren durchzuführen
-config.vm.provision :reload
-config.vm.provision "shell", inline: <<-SHELL
+  #Nach dem aktualisieren muss die VM reloaded werden,
+  #um einen möglichen reboot nach dem aktualisieren durchzuführen
+    uw.vm.provision :reload
+    uw.vm.provision "shell", inline: <<-SHELL
   #Firwall
-  sudo ufw allow 22/tcp
-  sudo ufw allow 123/udp
-  sudo ufw -f enable
-SHELL
+    sudo ufw allow 22/tcp
+    sudo ufw allow 123/udp
+    sudo ufw -f enable
+    SHELL
 end
