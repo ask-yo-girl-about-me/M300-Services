@@ -8,8 +8,6 @@ Vagrant.configure(2) do |config|
       teamspeak.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
       teamspeak.vm.synced_folder ".", "/var/www/html"
 
-      config.vm.define "TeamSpeak" do |ts|
-
       teamspeak.vm.provider "virtualbox"
       teamspeak.name = "TeamSpeak-Server"
       teamspeak.memory = "512"
