@@ -41,3 +41,4 @@ ts.vm.provision "shell", inline: <<-SHELL
     sudo ufw allow 123/udp
     sudo ufw -f enable
     SHELL
+end
