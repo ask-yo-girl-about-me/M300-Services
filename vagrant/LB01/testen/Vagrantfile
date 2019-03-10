@@ -38,6 +38,7 @@ end
     sudo apt-get update
     sudo apt-get upgrade -y
     SHELL
+  end
   #Nach dem aktualisieren muss die VM reloaded werden,
   #um einen möglichen reboot nach dem aktualisieren durchzuführen
     ts.vm.provision :reload
