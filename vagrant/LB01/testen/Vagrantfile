@@ -14,7 +14,7 @@ end
 config.vm.provision "shell", inline: <<-SHELL
   # Update Packages vom lokalen Server holen
   sudo apt-get update
-  sudo apt-get upgrade
+  sudo apt-get upgrade - y
 SHELL
 
 #Nach dem aktualisieren muss die VM reloaded werden,
