@@ -48,6 +48,7 @@ end
     sudo ufw -f enable
     SHELL
   end
+end
 #Ueberwachung Installation
   #Mit diesem Schritt bringen wir die VM auf den neusten Stand
     uw.vm.provision "shell", inline: <<-SHELL
