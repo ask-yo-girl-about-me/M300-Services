@@ -24,7 +24,6 @@ Vagrant.configure(2) do |config|
       uw.name = "Ueberwachung-Server"
       uw.memory = "512"
     end
-  end
 
 #TeamSpeak Installation
 #Mit diesem Schritt bringen wir die VM auf den neusten Stand
