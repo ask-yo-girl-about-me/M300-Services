@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
       teamspeak.memory = "512"
     end
   end
-
+Vagrant.configure(2) do |config|
       #Ueberwachung
       config.vm.define "Ueberwachung" do |uw|
       uw.vm.box = "generic/ubuntu1804"
