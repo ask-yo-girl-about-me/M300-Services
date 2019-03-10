@@ -38,7 +38,6 @@ end
     sudo apt-get update
     sudo apt-get upgrade -y
     SHELL
-  end
   #Nach dem aktualisieren muss die VM reloaded werden,
   #um einen möglichen reboot nach dem aktualisieren durchzuführen
     ts.vm.provision :reload
@@ -48,7 +47,6 @@ end
     sudo ufw allow 123/udp
     sudo ufw -f enable
     SHELL
-  end
 #Ueberwachung Installation
   #Mit diesem Schritt bringen wir die VM auf den neusten Stand
     uw.vm.provision "shell", inline: <<-SHELL
@@ -56,7 +54,6 @@ end
     sudo apt-get update
     sudo apt-get upgrade -y
     SHELL
-  end
   #Nach dem aktualisieren muss die VM reloaded werden,
   #um einen möglichen reboot nach dem aktualisieren durchzuführen
     uw.vm.provision :reload
@@ -66,5 +63,4 @@ end
     sudo ufw allow 123/udp
     sudo ufw -f enable
     SHELL
-  end
 end
