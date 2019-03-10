@@ -47,7 +47,6 @@ end
     sudo ufw allow 123/udp
     sudo ufw -f enable
     SHELL
-  end
 end
 #Ueberwachung Installation
   #Mit diesem Schritt bringen wir die VM auf den neusten Stand
@@ -65,5 +64,4 @@ end
     sudo ufw allow 123/udp
     sudo ufw -f enable
     SHELL
-  end
 end
