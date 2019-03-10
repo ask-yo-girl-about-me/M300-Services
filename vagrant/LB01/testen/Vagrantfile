@@ -20,8 +20,6 @@ Vagrant.configure(2) do |config|
       uw.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
       uw.vm.synced_folder ".", "/var/www/html"
 
-      config.vm.define "Ueberwachung" do |ts|
-
       uw.vm.provider "virtualbox"
       uw.name = "Ueberwachung-Server"
       uw.memory = "512"
