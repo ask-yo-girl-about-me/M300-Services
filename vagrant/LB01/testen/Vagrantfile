@@ -47,20 +47,3 @@ ts.vm.provision "shell", inline: <<-SHELL
     sudo ufw allow 123/udp
     sudo ufw -f enable
     SHELL
-#Ueberwachung Installation
-#Mit diesem Schritt bringen wir die VM auf den neusten Stand
-uw.vm.provision "shell", inline: <<-SHELL
-#Update Packages vom lokalen Server holen
-sudo apt-get update
-sudo apt-get upgrade -y
-SHELL
-#Nach dem aktualisieren muss die VM reloaded werden,
-#um einen möglichen reboot nach dem aktualisieren durchzuführen
-uw.vm.provision :reload
-uw.vm.provision "shell", inline: <<-SHELL
-#Firwall
-sudo ufw allow 22/tcp
-sudo ufw allow 123/udp
-sudo ufw -f enable
-  SHELL
-end
