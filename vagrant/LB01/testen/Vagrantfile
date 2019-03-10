@@ -3,16 +3,16 @@
 #VB Einrichtung
 Vagrant.configure(2) do |config|
       #TeamSpeak
-      config.vm.define "TeamSpeak" do |ts|
-      ts.vm.box = "generic/ubuntu1804"
-      ts.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
-      ts.vm.synced_folder ".", "/var/www/html"
+      config.vm.define "teamSpeak" do |teamspeak|
+      teamspeak.vm.box = "generic/ubuntu1804"
+      teamspeak.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
+      teamspeak.vm.synced_folder ".", "/var/www/html"
 
       config.vm.define "TeamSpeak" do |ts|
 
-      ts.vm.provider "virtualbox"
-      ts.name = "TeamSpeak-Server"
-      ts.memory = "512"
+      teamspeak.vm.provider "virtualbox"
+      teamspeak.name = "TeamSpeak-Server"
+      teamspeak.memory = "512"
     end
   end
 
