@@ -2,22 +2,32 @@
 
 #VB Einrichtung
 Vagrant.configure(2) do |config|
-  config.vm.box = "generic/ubuntu1804"
-  config.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
-  config.vm.synced_folder ".", "/var/www/html"
+      #TeamSpeak
+      config.vm.define "TeamSpeak" do |ts|
+      ts.vm.box = "generic/ubuntu1804"
+      ts.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
+      ts.vm.synced_folder ".", "/var/www/html"
 
-  #TeamSpeak
-  config.vm.define "TeamSpeak" do |ts|
-  ts.vm.provider "virtualbox"
-  ts.name = "TeamSpeak-Server"
-  ts.memory = "512"
+      config.vm.define "TeamSpeak" do |ts|
+
+      ts.vm.provider "virtualbox"
+      ts.name = "TeamSpeak-Server"
+      ts.memory = "512"
+    end
   end
 
-  #Ueberwachung
-  config.vm.define "Ueberwachung" do |uw|
-  uw.vm.provider "virtualbox"
-  uw.name = "TeamSpeak-Server"
-  uw.memory = "512"
+      #Ueberwachung
+      config.vm.define "Ueberwachung" do |uw|
+      uw.vm.box = "generic/ubuntu1804"
+      uw.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
+      uw.vm.synced_folder ".", "/var/www/html"
+
+      config.vm.define "Ueberwachung" do |ts|
+
+      uw.vm.provider "virtualbox"
+      uw.name = "Ueberwachung-Server"
+      uw.memory = "512"
+    end
   end
 end
 
@@ -58,4 +68,3 @@ end
     sudo ufw -f enable
     SHELL
   end
-end
