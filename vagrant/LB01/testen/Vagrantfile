@@ -28,6 +28,9 @@ config.vm.provision "shell", inline: <<-SHELL
 SHELL
 end
 
+#Damit die zweite VM auch eingerichtet werden kann
+config.vm.provision :reload
+
 #Überwachungsserver
 Vagrant.configure(2) do |config|
   config.vm.box = "generic/ubuntu1804"
