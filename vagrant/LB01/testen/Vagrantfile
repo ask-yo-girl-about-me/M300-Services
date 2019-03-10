@@ -68,3 +68,4 @@ end
     sudo ufw -f enable
     SHELL
   end
+end
