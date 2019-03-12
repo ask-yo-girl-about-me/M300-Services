@@ -4,7 +4,8 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "generic/ubuntu1804"
   config.vm.network "forwarded_port", guest:22, host:2222, auto_correct: true
-  config.vm.network "forwarded_port", guest:9987, host:9987, auto_correct: true
+  config.vm.network "forwarded_port", guest:9987, host:9987, auto_correct: true, protocol: "tcp"
+  config.vm.network "forwarded_port", guest:9987, host:9987, auto_correct: true, protocol: "udp"
   config.vm.synced_folder ".", "/var/www/html"
 config.vm.provider "virtualbox" do |vb|
   vb.name = "TeamSpeak-Server"
