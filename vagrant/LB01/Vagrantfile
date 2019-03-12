@@ -2,7 +2,7 @@ Vagrant.configure(2) do |config|
   config.vm.defin "TeamSpeak" do |ts|
     #
     ts.vm.box = "generic/ubuntu1804"
-    ts.vm.hostname = "mail-server-1-hostname"
+    ts.vm.hostname = "TeamSpeak"
     ts.vm.network "forwarded_port", guest:22, host:2222, auto_correct: true
     ts.vm.network "forwarded_port", guest:9987, host:9987, auto_correct: true, protocol: "tcp"
     ts.vm.network "forwarded_port", guest:9987, host:9987, auto_correct: true, protocol: "udp"
