@@ -34,7 +34,8 @@ Vagrant.configure(2) do |config|
   # the second vm gets defined with a different name
   config.vm.define "ueberwachung" do |uv|
     # again, the needed information
-    ts.vm.box = "generic/ubuntu1804"
+    uv.vm.box = "generic/ubuntu1804"
+    uv.vm.hostname = "Ueberwachung"
     # the physical propertys
     uv.vm.provider "virtualbox" do |vb|
       vb.name = "Ueberwachung"
