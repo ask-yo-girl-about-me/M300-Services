@@ -25,13 +25,14 @@ Vagrant.configure(2) do |config|
       cd
       #In das Verzeichnis /usr/local/bin/teamspeak3-server_linux_amd64 wechseln
       cd /usr/local/bin/teamspeak3-server_linux_amd64
+      sudo touch .ts3server_license_accepted
       #Vor dem start müssen noch folgende Files von Hand angelegt werden
-      sudo ./ts3server createinifile=1
-      sudo sed -i 's/license_accepted=0/license_accepted=1/g' /usr/local/bin/teamspeak3-server_linux_amd64/ts3server.ini
+      #sudo ./ts3server createinifile=1
+      #sudo sed -i 's/license_accepted=0/license_accepted=1/g' /usr/local/bin/teamspeak3-server_linux_amd64/ts3server.ini
       #sudo touch /usr/local/bin/teamspeak3-server_linux_amd64/ts3server_license_accepted
       #Starten des Dienstes bzw. des Servers
       #sudo ./ts3server_startscript.sh start inifile=ts3server.ini
-      sudo ./ts3server_startscript.sh start inifile=ts3server.ini
+      sudo ./ts3server_startscript.sh start
       SHELL
     end
   end
