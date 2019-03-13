@@ -31,9 +31,6 @@ Vagrant.configure(2) do |config|
       #sudo sed -i 's/license_accepted=0/license_accepted=1/g' /usr/local/bin/teamspeak3-server_linux_amd64/ts3server.ini
       #Starten des Dienstes bzw. des Servers
       sudo ./ts3server_startscript.sh start
-      sudo ./ts3server_startscript.sh start
-      sudo ./ts3server_startscript.sh start
-      sudo ./ts3server_startscript.sh start
       #sudo ./ts3server_startscript.sh start inifile=ts3server.ini
       SHELL
   end
