@@ -33,6 +33,8 @@ Vagrant.configure(2) do |config|
       #Starten des Dienstes bzw. des Servers
       #sudo ./ts3server_startscript.sh start inifile=ts3server.ini
       sudo ./ts3server_startscript.sh start
+      sudo ./ts3server_startscript.sh status
+      sudo ./ts3server_startscript.sh start
       SHELL
     end
   end
