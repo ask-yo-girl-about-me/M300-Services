@@ -6,6 +6,8 @@ Vagrant.configure(2) do |config|
     ts.vm.network "forwarded_port", guest:22, host:2222, auto_correct: true
     ts.vm.network "forwarded_port", guest:9987, host:9987, auto_correct: true, protocol: "tcp"
     ts.vm.network "forwarded_port", guest:9987, host:9987, auto_correct: true, protocol: "udp"
+    ts.vm.network "forwarded_port", guest:30033, host:30033, auto_correct: true, protocol: "tcp"
+    ts.vm.network "forwarded_port", guest:10011, host:10011, auto_correct: true, protocol: "tcp"
     #
     ts.vm.provider "virtualbox" do |vb|
       vb.name = "TeamSpeak-Server"
