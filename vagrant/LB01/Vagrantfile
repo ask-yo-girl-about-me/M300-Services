@@ -15,8 +15,8 @@ Vagrant.configure(2) do |config|
     end
     #Mit diesem Schritt bringen wir die VM auf den neusten Stand
     ts.vm.provision "shell", inline: <<-SHELL
-      #sudo apt-get update
-      #sudo apt-get upgrade -y
+      sudo apt-get update
+      sudo apt-get upgrade -y
       #Packet von Teamspeak herunterladen von einer Mirrorseite und dann gleich entpacken
       cd /tmp
       wget http://dl.4players.de/ts/releases/3.6.1/teamspeak3-server_linux_amd64-3.6.1.tar.bz2
@@ -32,8 +32,6 @@ Vagrant.configure(2) do |config|
       #sudo touch /usr/local/bin/teamspeak3-server_linux_amd64/ts3server_license_accepted
       #Starten des Dienstes bzw. des Servers
       #sudo ./ts3server_startscript.sh start inifile=ts3server.ini
-      sudo ./ts3server_startscript.sh start
-      sudo ./ts3server_startscript.sh status
       sudo ./ts3server_startscript.sh start
       SHELL
     end
