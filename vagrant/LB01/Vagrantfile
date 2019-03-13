@@ -43,7 +43,12 @@ Vagrant.configure(2) do |config|
     end
     # mit diesem abschnitt bringen wir die VM auf den eusten stand
     uv.vm.provision "shell", inline: <<-SHELL
-      ---------------
+      sudo apt-get update
+      sudo apt-get upgrade -y
+      apt-get install munin
+      apt-get install munin-node
+      sudo /etc/init.d/munin-node start
+
       SHELL
   end
   end
