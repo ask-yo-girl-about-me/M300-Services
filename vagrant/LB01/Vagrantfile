@@ -1,6 +1,6 @@
 Vagrant.configure(2) do |config|
   config.vm.define "TeamSpeak" do |ts|
-    #
+    #Auswahl der Box, der Host Name und Ports Einstellungen der VB
     ts.vm.box = "generic/ubuntu1804"
     ts.vm.hostname = "TeamSpeak"
     ts.vm.network "forwarded_port", guest:22, host:2222, auto_correct: true
@@ -8,7 +8,7 @@ Vagrant.configure(2) do |config|
     ts.vm.network "forwarded_port", guest:30033, host:30033, auto_correct: true, protocol: "tcp"
     ts.vm.network "forwarded_port", guest:10011, host:10011, auto_correct: true, protocol: "tcp"
     ts.vm.network "forwarded_port", guest:41144, host:41144, auto_correct: true, protocol: "tcp"
-    #
+    #Virtualisierungs Programm, Name und Memory der VM auswählen
     ts.vm.provider "virtualbox" do |vb|
       vb.name = "TeamSpeak-Server"
       vb.memory = "1024"
@@ -23,13 +23,14 @@ Vagrant.configure(2) do |config|
       tar -xjf teamspeak3-server_linux_amd64-3.6.1.tar.bz2 -C /usr/local/bin/
       rm teamspeak3-server_linux_amd64-3.6.1.tar.bz2
       cd
-      #In das Verzeichnis /usr/local/bin/ wechseln
+      #In das Verzeichnis /usr/local/bin/teamspeak3-server_linux_amd64 wechseln
       cd /usr/local/bin/teamspeak3-server_linux_amd64
       #Vor dem start müssen noch folgende Files von Hand angelegt werden
       sudo ./ts3server createinifile=1
-      sudo touch .ts3server_license_accepted
-      #sudo sed -i 's/license_accepted=0/license_accepted=1/g' /usr/local/bin/teamspeak3-server_linux_amd64/ts3server.ini
+      #sudo touch .ts3server_license_accepted
+      sudo sed -i 's/license_accepted=0/license_accepted=1/g' /usr/local/bin/teamspeak3-server_linux_amd64/ts3server.ini
       #Starten des Dienstes bzw. des Servers
+      sudo ./ts3server_startscript.sh start
       sudo ./ts3server_startscript.sh start
       #sudo ./ts3server_startscript.sh start inifile=ts3server.ini
       SHELL
