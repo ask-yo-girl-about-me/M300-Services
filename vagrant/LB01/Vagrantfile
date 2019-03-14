@@ -33,7 +33,7 @@ Vagrant.configure(2) do |config|
     end
   end
     # Hier Installieren wir die zweite VM dies wir einen Webserver
-    config.vm.define "WebServer" do |ws|
+  config.vm.define "WebServer" do |ws|
       #Auswahl der Box, der Host Name und Ports Einstellungen der VB
       ws.vm.box = "generic/ubuntu1804"
       ws.vm.hostname = "WebServer"
@@ -45,10 +45,10 @@ Vagrant.configure(2) do |config|
       vb.memory = "1024"
     end
       # Mit diesem abschnitt bringen wir die VM auf den eusten stand
-      ws.vm.provision "shell", inline: <<-SHELL
-        sudo apt-get update
-        sudo apt-get upgrade -y
-        sudo apt-get install apache2
+    ws.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update
+      sudo apt-get upgrade -y
+      sudo apt-get install apache2
         SHELL
     end
-  end
+end
