@@ -25,14 +25,30 @@ Vagrant.configure(2) do |config|
       cd
       #In das Verzeichnis /usr/local/bin/teamspeak3-server_linux_amd64 wechseln
       cd /usr/local/bin/teamspeak3-server_linux_amd64
+      #Damit wir den Server starten können müsse wir nich die Lizenz akzeptieren
       sudo touch .ts3server_license_accepted
-      #Vor dem start müssen noch folgende Files von Hand angelegt werden
-      #sudo ./ts3server createinifile=1
-      #sudo sed -i 's/license_accepted=0/license_accepted=1/g' /usr/local/bin/teamspeak3-server_linux_amd64/ts3server.ini
-      #sudo touch /usr/local/bin/teamspeak3-server_linux_amd64/ts3server_license_accepted
-      #Starten des Dienstes bzw. des Servers
-      #sudo ./ts3server_startscript.sh start inifile=ts3server.ini
+      #Nun starten wir den TeamSpeak Server
       sudo ./ts3server_startscript.sh start
       SHELL
+    end
+
+    # Hier Installieren wir die zweite VM dies wir einen Webserver
+    config.vm.define "WebServer" do |ws|
+      #Auswahl der Box, der Host Name und Ports Einstellungen der VB
+      ws.vm.box = "generic/ubuntu1804"
+      ws.vm.hostname = "WebServer"
+      ts.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
+      config.vm.synced_folder ".", "/var/www/html"
+      #Die VB Einstellungen
+    ws.vm.provider "virtualbox" do |vb|
+      vb.name = "WebServer"
+      vb.memory = "1024"
+    end
+      # Mit diesem abschnitt bringen wir die VM auf den eusten stand
+      ws.vm.provision "shell", inline: <<-SHELL
+        sudo apt-get update
+        sudo apt-get upgrade -y
+        sudo apt-get install apache2
+        SHELL
     end
   end
