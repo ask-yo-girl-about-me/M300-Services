@@ -9,8 +9,8 @@ Ich will zwei Server Aufsetzten.
 Als erster Server dachte ich mir mache ich einen TeamSpeak Server.
 Da ich TeamSpeak kenne, finde ich dies eine gute Idee.
 Zudem will ich einen zweiten Server noch installieren.
-Dabei dachte ich mir, dass ich mein TeamSpeak Server überwache.
-Dazu installiere ich Munin. Munin ist eine umfassende und sehr einfache zu bedienende Rechner-Überprüfungssoftware.
+Dabei dachte ich mir, dass ich mein TeamSpeak Server auf einer Webseite veröffentliche.
+Dazu installiere ich einen Apache2 Server. Dazu schreiben wir noch eine Webseite.
 
 ### Informationen
 [1]: https://docs.google.com/document/d/1M-aswL3k4uI-_MYO8RLX7ExAFEzVJkUoqjAOLj9gtyY/edit
@@ -33,7 +33,7 @@ Dieses Dokument wurde mit [Markdown][2] geschrieben
 
 ##Vorbereitung
 ---
--
+Wir haben uns zuerst mal darüber informiert was wir für Server installieren wollen. Danah
 
 ##Installation
 ---
