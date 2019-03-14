@@ -47,7 +47,7 @@ Vagrant.configure(2) do |config|
     ws.vm.provision "shell", inline: <<-SHELL
       sudo apt-get update
       sudo apt-get upgrade -y
-      sudo apt-get install apache2
+      sudo apt-get install apache2 -y
       SHELL
     end
   end
