@@ -16,6 +16,8 @@ Vagrant.configure(2) do |config|
     ts.vm.provision "shell", inline: <<-SHELL
       #sudo apt-get update
       #sudo apt-get upgrade -y
+      sudo apt-get install ufw
+      #sudo ufw enable
       SHELL
       #Nach dem aktualisieren muss die VM reloaded werden,
       #um einen möglichen reboot nach dem aktualisieren durchzuführen
