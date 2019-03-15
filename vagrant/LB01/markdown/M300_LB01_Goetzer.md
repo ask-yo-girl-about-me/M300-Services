@@ -35,24 +35,56 @@ Dieses Dokument wurde mit [Markdown][2] geschrieben
 ---
 Zuerst suchte ich mir meine Dienste aus die ich per Vagrant installieren will heraus.
 Meine Idee war es einen Teamspeak Server und dazu einen Überwachungsserver zu installieren.
-Ich Installierte beide Server zuerst manuell in Virtuallbox, um zu schauen was man alles machen kann und ich weiss das es läuft.
+Ich Installierte beide Server zuerst manuell in Virtualbox, um zu schauen was man alles machen kann und ich weiss das es läuft.
 Dan fand ich heraus, dass der Überwachungsserver zu schwierig im Vagrant wird, Darum wählte ich als zweiten Server einen Apache2 Server in dem Infos von unserem TeamSpeak Server enthalten sind.
 
 Als Vorbereitung oder absicherung installierte ich den TeamSpeak und den Apache Server einmal manuell. Um zu sehen welche befehle ich alles brauche und auf was ich alles achten muss.
 
 ##Installation
 ---
-Grundsätzlivch machten ich die Installation nach der Seite Wiki.Ubuntuusers.de.
+Grundsätzlich machten ich die Installation nach der Seite Wiki.Ubuntuusers.de.
 
 Aber es gab einige Stolpersteine:
  * Netzwerkeinstellungen damit man von einem anderen Gerät darauf zugreiffen kann.
  * Neustarten der VM wären dem ausführen der VM
  * Updaten der Server
 
-###konfigurieren der VM (TeamSpeak)
+Hier ein Bild meines Vagrant Files:
 
+![Image](images/vagrantcode.png)
+
+
+###konfigurieren der VM (TeamSpeak)
+Grundsätzlich baute ich die VM auf, indem ich:
+* Der VM Name definierte
+* Die Box die ich brauche
+  Hier wählte ich ein einfaches Ubuntu mit der Version 18.04
+* Der Hostname der VM
+* Die Netzwerkeinstellungen in Virtualbox
+  Hier ist wichtig, dass man den Port 9987, 30033, 10011§ und 41144 zwingend NATet.
+* Den Provider auswähle, also das Virtualisierungsprogramm
+* Der Name der VM
+* Anzahl RAM
 
 ###Installieren von TeamSpeak Server
+Als erstes bringen wir den TeamSpeak Server auf den neusten Stand. Dies machen wir per update und upgrade.
+![Image](images/update.upgradets.png)
+
+Wichtig ist hier, dass wir den Server neustarten, damit auch alles auf dem neusten stand läuft.
+
+Danach Installieren wir TeamSpeak wie in der Anleitung beschrieben [TeamSpeak Installation][5].
+![Image](images/TeamSpeakinstallation.png)
+
+Der letzte Punkt vor dem Starten des Server, ist sehr wichtig. Dieser musste ich selber herausfinde, weil dies in der Anleitung anderst gemacht wird, bei mir aber so nicht geklappt hat.
+
+###Installieren von WebServer
+Als erstes bringen wir den Webserver auf den neusten Stand. Dies machen wir per update und upgrade.
+![Image](images/update.upgradews.png)
+
+Wichtig ist hier, dass wir den Server neustarten, damit auch alles auf dem neusten stand läuft.
+
+Danach Installieren wir den Webserver wie in der Anleitung beschrieben [Apache2][6].
+![Image](images/Apache2installation.png)
 
 ##Testing
 ---
