@@ -107,6 +107,8 @@ Den TeamSpeak können Sie entweder von der [TeamSpeak][7] Seite herunterladen od
 4. Server Adresse eingebem (in meinem Fall 10.71.13.13)
 5. Verbinden
 
+
+
 ### WebServer Testing
 1. Webbroswser öffnen
 2. Server adresse mit Port in der Suche eingeben (10.71.13.13:8080)
