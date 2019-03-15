@@ -19,6 +19,7 @@ Dazu installiere ich einen Apache2 Server mit einer Webseite in der Infos von un
 [4]: https://github.com/ask-yo-girl-about-me/M300-Services.git
 [5]: https://wiki.ubuntuusers.de/TeamSpeak-Server/
 [6]: https://wiki.ubuntuusers.de/Apache2/
+[7]: https://www.teamspeak.com/en/
 
 Alle Unterlagen befinden sich im [BSCW-M300][3] Folder. Noch mehr Informationen finden sie im [Lernjournal][1] vom M300.
 Dieses Dokument wurde mit [Markdown][2] geschrieben
@@ -52,7 +53,7 @@ Aber es gab einige Stolpersteine:
 
 Hier ein Bild meines Vagrant Files:
 
-![Image](images/vagrantcode.png)
+![Image](images/vagrantcode1.png)
 
 
 ### Konfigurieren der VM (TeamSpeak)
@@ -68,23 +69,27 @@ Grundsätzlich baute ich die VM auf, indem ich:
 * Anzahl RAM
 
 ### Installieren von TeamSpeak Server
-Als erstes bringen wir den TeamSpeak Server auf den neusten Stand. Dies machen wir per update und upgrade.
+Als erstes bringen wir den TeamSpeak Server auf den neusten Stand. Dies machen wir per update und upgrade. Dazu Installieren und aktivieren wir nich die Firewall und nur die Ports die wir auch brauchen.
+
 ![Image](images/update.upgradets.png)
 
 Wichtig ist hier, dass wir den Server neustarten, damit auch alles auf dem neusten stand läuft.
-
 Danach Installieren wir TeamSpeak wie in der Anleitung beschrieben [TeamSpeak Installation][5].
+
 ![Image](images/TeamSpeakinstallation.png)
 
 Der letzte Punkt vor dem Starten des Server, ist sehr wichtig. Dieser musste ich selber herausfinde, weil dies in der Anleitung anderst gemacht wird, bei mir aber so nicht geklappt hat.
 
 ### Installieren von WebServer
 Als erstes bringen wir den Webserver auf den neusten Stand. Dies machen wir per update und upgrade.
+Dazu Installieren und aktivieren wir nich die Firewall und nur die Ports die wir auch brauchen.
+Wichtig ist hier das wir einen Neustart machen. Dies läuft über einen :reload. Dazu müssen wir aber zuerst etwas auf unserem Gerät Installieren.
+
 ![Image](images/update.upgradews.png)
 
 Wichtig ist hier, dass wir den Server neustarten, damit auch alles auf dem neusten stand läuft.
-
 Danach Installieren wir den Webserver wie in der Anleitung beschrieben [Apache2][6].
+
 ![Image](images/Apache2installation.png)
 
 Hier hatte ich eigentlich keine grossen Probleme. Ausser, dass ich mich wieder ein bisschen ins HTML Codieren eindenken musste.
@@ -104,4 +109,4 @@ Den TeamSpeak können Sie entweder von der [TeamSpeak][7] Seite herunterladen od
 
 ### WebServer Testing
 1. Webbroswser öffnen
-2. Server adresse mit Port in der Suche eingeben (10.71.13.13:80)
+2. Server adresse mit Port in der Suche eingeben (10.71.13.13:8080)
