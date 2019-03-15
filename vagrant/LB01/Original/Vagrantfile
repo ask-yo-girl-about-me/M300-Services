@@ -3,10 +3,10 @@ Vagrant.configure(2) do |config|
     #Auswahl der Box, der Host Name und Ports Einstellungen der VB
     ts.vm.box = "generic/ubuntu1804"
     ts.vm.hostname = "TeamSpeak"
-    ts.vm.network "forwarded_port", guest:9987, host:9987, auto_correct: true, protocol: "udp"
-    ts.vm.network "forwarded_port", guest:30033, host:30033, auto_correct: true, protocol: "tcp"
-    ts.vm.network "forwarded_port", guest:10011, host:10011, auto_correct: true, protocol: "tcp"
-    ts.vm.network "forwarded_port", guest:41144, host:41144, auto_correct: true, protocol: "tcp"
+    ts.vm.network "forwarded_port", guest:9987, host:9987, auto_correct: true, protocol: "udp", host_ip: "0.0.0.0"
+    ts.vm.network "forwarded_port", guest:30033, host:30033, auto_correct: true, protocol: "tcp", host_ip: "0.0.0.0"
+    ts.vm.network "forwarded_port", guest:10011, host:10011, auto_correct: true, protocol: "tcp", host_ip: "0.0.0.0"
+    ts.vm.network "forwarded_port", guest:41144, host:41144, auto_correct: true, protocol: "tcp", host_ip: "0.0.0.0"
     #Virtualisierungs Programm, Name und Memory der VM auswählen
     ts.vm.provider "virtualbox" do |vb|
       vb.name = "TeamSpeak-Server"
