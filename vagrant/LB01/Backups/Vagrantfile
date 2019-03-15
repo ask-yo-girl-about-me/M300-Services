@@ -1,0 +1,54 @@
+Vagrant.configure(2) do |config|
+  config.vm.define "TeamSpeak" do |ts|
+    #Auswahl der Box, der Host Name und Ports Einstellungen der VB
+    ts.vm.box = "generic/ubuntu1804"
+    ts.vm.hostname = "TeamSpeak"
+    ts.vm.network "forwarded_port", guest:22, host:2222, auto_correct: true
+    ts.vm.network "forwarded_port", guest:9987, host:9987, auto_correct: true, protocol: "udp"
+    ts.vm.network "forwarded_port", guest:30033, host:30033, auto_correct: true, protocol: "tcp"
+    ts.vm.network "forwarded_port", guest:10011, host:10011, auto_correct: true, protocol: "tcp"
+    ts.vm.network "forwarded_port", guest:41144, host:41144, auto_correct: true, protocol: "tcp"
+    #Virtualisierungs Programm, Name und Memory der VM auswählen
+    ts.vm.provider "virtualbox" do |vb|
+      vb.name = "TeamSpeak-Server"
+      vb.memory = "1024"
+    end
+    #Mit diesem Schritt bringen wir die VM auf den neusten Stand
+    ts.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update
+      sudo apt-get upgrade -y
+      #Packet von Teamspeak herunterladen von einer Mirrorseite und dann gleich entpacken
+      cd /tmp
+      wget http://dl.4players.de/ts/releases/3.6.1/teamspeak3-server_linux_amd64-3.6.1.tar.bz2
+      tar -xjf teamspeak3-server_linux_amd64-3.6.1.tar.bz2 -C /usr/local/bin/
+      rm teamspeak3-server_linux_amd64-3.6.1.tar.bz2
+      cd
+      #In das Verzeichnis /usr/local/bin/teamspeak3-server_linux_amd64 wechseln
+      cd /usr/local/bin/teamspeak3-server_linux_amd64
+      #Damit wir den Server starten können müsse wir nich die Lizenz akzeptieren
+      sudo touch .ts3server_license_accepted
+      #Nun starten wir den TeamSpeak Server
+      sudo ./ts3server_startscript.sh start
+      SHELL
+    end
+  end
+    # Hier Installieren wir die zweite VM dies wir einen Webserver
+  config.vm.define "WebServer" do |ws|
+      #Auswahl der Box, der Host Name und Ports Einstellungen der VB
+      ws.vm.box = "generic/ubuntu1804"
+      ws.vm.hostname = "WebServer"
+      ws.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
+      config.vm.synced_folder ".", "/var/www/html"
+      #Die VB Einstellungen
+    ws.vm.provider "virtualbox" do |vb|
+      vb.name = "WebServer"
+      vb.memory = "1024"
+    end
+      # Mit diesem abschnitt bringen wir die VM auf den eusten stand
+    ws.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update
+      sudo apt-get upgrade -y
+      sudo apt-get install apache2
+        SHELL
+    end
+end

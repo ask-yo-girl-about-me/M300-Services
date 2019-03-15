@@ -61,7 +61,7 @@ Grundsätzlich baute ich die VM auf, indem ich:
   Hier wählte ich ein einfaches Ubuntu mit der Version 18.04
 * Der Hostname der VM
 * Die Netzwerkeinstellungen in Virtualbox
-  Hier ist wichtig, dass man den Port 9987, 30033, 10011§ und 41144 zwingend NATet.
+  Hier ist wichtig, dass man den für den TeamSpeak Server den Port 9987, 30033, 10011§ und 41144 und für den Apache Server 80 zwingend NATet.
 * Den Provider auswähle, also das Virtualisierungsprogramm
 * Der Name der VM
 * Anzahl RAM
@@ -86,6 +86,8 @@ Wichtig ist hier, dass wir den Server neustarten, damit auch alles auf dem neust
 Danach Installieren wir den Webserver wie in der Anleitung beschrieben [Apache2][6].
 ![Image](images/Apache2installation.png)
 
+Hier hatte ich eigentlich keine grossen Probleme.
+
 ##Testing
 ---
--
+Um das ganze zu testen, brauchen wir einen Internet explorer und TeamSpeak.
