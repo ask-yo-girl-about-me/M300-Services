@@ -34,7 +34,6 @@ Vagrant.configure(2) do |config|
       #Nun starten wir den TeamSpeak Server
       sudo /usr/local/bin/teamspeak3-server_linux_amd64/ts3server_startscript.sh start
       SHELL
-    end
     ts.vm.provision "shell", inline: <<-SHELL
       sudo /usr/local/bin/teamspeak3-server_linux_amd64/ts3server_startscript.sh start
       sleep 10
