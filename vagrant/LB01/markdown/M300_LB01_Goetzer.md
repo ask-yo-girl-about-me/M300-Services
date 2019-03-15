@@ -1,6 +1,7 @@
 # LB01 von Leandro Götzer
 
 ## Auftrag
+---
 Unser Auftrag ist es, eine VM automatisiert aufzusetzten mit einem Vagrant File.
 Dazu müssen wir Services aussuchen die wir installieren und konfigurieren mitels Vagrant File.
 
@@ -46,7 +47,7 @@ Als Vorbereitung oder absicherung installierte ich den TeamSpeak und den Apache 
 ---
 Grundsätzlich machten ich die Installation nach der Seite Wiki.Ubuntuusers.de.
 
-Aber es gab einige Stolpersteine:
+Stolpersteine:
  * Netzwerkeinstellungen damit man von einem anderen Gerät darauf zugreiffen kann.
  * Neustarten der VM wären dem ausführen der VM
  * Updaten der Server
@@ -58,15 +59,15 @@ Hier ein Bild meines Vagrant Files:
 
 ### Konfigurieren der VM (TeamSpeak)
 Grundsätzlich baute ich die VM auf, indem ich:
-* Der VM Name definierte
-* Die Box die ich brauche
+* Der VM einen Name definierte
+* Die Box die ich brauche definierte
   Hier wählte ich ein einfaches Ubuntu mit der Version 18.04
-* Der Hostname der VM
-* Die Netzwerkeinstellungen in Virtualbox
+* Der Hostname der VM definierte
+* Die Netzwerkeinstellungen in Virtualbox definierte
   Hier ist wichtig, dass man den für den TeamSpeak Server den Port 9987, 30033, 10011§ und 41144 und für den Apache Server 80 zwingend NATet.
 * Den Provider auswähle, also das Virtualisierungsprogramm
-* Der Name der VM
-* Anzahl RAM
+* Der Name der VM definierte
+* Anzahl RAM definierte
 
 ### Installieren von TeamSpeak Server
 Als erstes bringen wir den TeamSpeak Server auf den neusten Stand. Dies machen wir per update und upgrade. Dazu Installieren und aktivieren wir nich die Firewall und nur die Ports die wir auch brauchen.
@@ -79,6 +80,18 @@ Danach Installieren wir TeamSpeak wie in der Anleitung beschrieben [TeamSpeak In
 ![Image](images/TeamSpeakinstallation.png)
 
 Der letzte Punkt vor dem Starten des Server, ist sehr wichtig. Dieser musste ich selber herausfinde, weil dies in der Anleitung anderst gemacht wird, bei mir aber so nicht geklappt hat.
+
+### Konfigurieren der VM (WebServer)
+Grundsätzlich baute ich die VM auf, indem ich:
+* Der VM einen Name definierte
+* Die Box die ich brauche definierte
+  Hier wählte ich ein einfaches Ubuntu mit der Version 18.04
+* Der Hostname der VM definierte
+* Die Netzwerkeinstellungen in Virtualbox definierte
+  Hier ist wichtig, dass man den für den TeamSpeak Server den Port 9987, 30033, 10011§ und 41144 und für den Apache Server 80 zwingend NATet.
+* Den Provider auswähle, also das Virtualisierungsprogramm
+* Der Name der VM definierte
+* Anzahl RAM definierte
 
 ### Installieren von WebServer
 Als erstes bringen wir den Webserver auf den neusten Stand. Dies machen wir per update und upgrade.
