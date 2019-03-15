@@ -116,3 +116,6 @@ Hier einige Bilder
 ### WebServer Testing
 1. Webbroswser öffnen
 2. Server adresse mit Port in der Suche eingeben (10.71.13.13:8080)
+
+Hier ein Bild. Ich testete es einfach per localhost. Wenn dies auf einem externen Gerät getestet wird, muss dies mit der Server IP gemacht werden.
+![Image](images/ws1.png)
