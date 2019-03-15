@@ -30,6 +30,7 @@ Dieses Dokument wurde mit [Markdown][2] geschrieben
 * [Mein Repository][4]
 * [TeamSpeak Installation][5]
 * [Apache2][6]
+* [TeamSpeak][7]
 
 ##Vorbereitung
 ---
@@ -86,8 +87,21 @@ Wichtig ist hier, dass wir den Server neustarten, damit auch alles auf dem neust
 Danach Installieren wir den Webserver wie in der Anleitung beschrieben [Apache2][6].
 ![Image](images/Apache2installation.png)
 
-Hier hatte ich eigentlich keine grossen Probleme.
+Hier hatte ich eigentlich keine grossen Probleme. Ausser, dass ich mich wieder ein bisschen ins HTML Codieren eindenken musste.
 
 ##Testing
 ---
 Um das ganze zu testen, brauchen wir einen Internet explorer und TeamSpeak.
+
+Den TeamSpeak können Sie entweder von der [TeamSpeak][7] Seite herunterladen oder von meinem Repo unter M300-Services/Vagrant/LB01/Software/TeamSpeakClient.
+
+###TeamSpeak Testing
+1. TeamSpeak Starten
+2. Oben links auf Verbindungen
+3. Verbinden
+4. Server Adresse eingebem (in meinem Fall 10.71.13.13)
+5. Verbinden
+
+###WebServer Testing
+1. Webbroswser öffnen
+2. Server adresse mit Port in der Suche eingeben (10.71.13.13:80)
