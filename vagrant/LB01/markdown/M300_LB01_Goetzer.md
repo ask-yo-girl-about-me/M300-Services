@@ -106,8 +106,12 @@ Den TeamSpeak können Sie entweder von der [TeamSpeak][7] Seite herunterladen od
 3. Verbinden
 4. Server Adresse eingebem (in meinem Fall 10.71.13.13)
 5. Verbinden
-
-
+Hier einige Bilder
+![Image](images/ts1.png)
+![Image](images/ts2.png)
+![Image](images/ts3.png)
+![Image](images/ts4.png)
+![Image](images/ts5.png)
 
 ### WebServer Testing
 1. Webbroswser öffnen
