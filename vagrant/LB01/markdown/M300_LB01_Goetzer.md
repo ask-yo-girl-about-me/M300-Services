@@ -32,7 +32,7 @@ Dieses Dokument wurde mit [Markdown][2] geschrieben
 * [Apache2][6]
 * [TeamSpeak][7]
 
-##Vorbereitung
+## Vorbereitung
 ---
 Zuerst suchte ich mir meine Dienste aus die ich per Vagrant installieren will heraus.
 Meine Idee war es einen Teamspeak Server und dazu einen Überwachungsserver zu installieren.
@@ -41,7 +41,7 @@ Dan fand ich heraus, dass der Überwachungsserver zu schwierig im Vagrant wird, 
 
 Als Vorbereitung oder absicherung installierte ich den TeamSpeak und den Apache Server einmal manuell. Um zu sehen welche befehle ich alles brauche und auf was ich alles achten muss.
 
-##Installation
+## Installation
 ---
 Grundsätzlich machten ich die Installation nach der Seite Wiki.Ubuntuusers.de.
 
@@ -55,7 +55,7 @@ Hier ein Bild meines Vagrant Files:
 ![Image](images/vagrantcode.png)
 
 
-###konfigurieren der VM (TeamSpeak)
+### Konfigurieren der VM (TeamSpeak)
 Grundsätzlich baute ich die VM auf, indem ich:
 * Der VM Name definierte
 * Die Box die ich brauche
@@ -67,7 +67,7 @@ Grundsätzlich baute ich die VM auf, indem ich:
 * Der Name der VM
 * Anzahl RAM
 
-###Installieren von TeamSpeak Server
+### Installieren von TeamSpeak Server
 Als erstes bringen wir den TeamSpeak Server auf den neusten Stand. Dies machen wir per update und upgrade.
 ![Image](images/update.upgradets.png)
 
@@ -78,7 +78,7 @@ Danach Installieren wir TeamSpeak wie in der Anleitung beschrieben [TeamSpeak In
 
 Der letzte Punkt vor dem Starten des Server, ist sehr wichtig. Dieser musste ich selber herausfinde, weil dies in der Anleitung anderst gemacht wird, bei mir aber so nicht geklappt hat.
 
-###Installieren von WebServer
+### Installieren von WebServer
 Als erstes bringen wir den Webserver auf den neusten Stand. Dies machen wir per update und upgrade.
 ![Image](images/update.upgradews.png)
 
@@ -89,19 +89,19 @@ Danach Installieren wir den Webserver wie in der Anleitung beschrieben [Apache2]
 
 Hier hatte ich eigentlich keine grossen Probleme. Ausser, dass ich mich wieder ein bisschen ins HTML Codieren eindenken musste.
 
-##Testing
+## Testing
 ---
 Um das ganze zu testen, brauchen wir einen Internet explorer und TeamSpeak.
 
 Den TeamSpeak können Sie entweder von der [TeamSpeak][7] Seite herunterladen oder von meinem Repo unter M300-Services/Vagrant/LB01/Software/TeamSpeakClient.
 
-###TeamSpeak Testing
+### TeamSpeak Testing
 1. TeamSpeak Starten
 2. Oben links auf Verbindungen
 3. Verbinden
 4. Server Adresse eingebem (in meinem Fall 10.71.13.13)
 5. Verbinden
 
-###WebServer Testing
+### WebServer Testing
 1. Webbroswser öffnen
 2. Server adresse mit Port in der Suche eingeben (10.71.13.13:80)
