@@ -14,6 +14,8 @@ Vagrant.configure(2) do |config|
     end
     #Mit diesem Schritt bringen wir die VM auf den neusten Stand
     ts.vm.provision "shell", inline: <<-SHELL
+      sudo useradd -m tsadmin -p $(echo "asdf1234" | openssl passwd -1 -stdin)
+      sudo usermod -aG sudo tsadmin
       sudo apt-get update
       sudo apt-get upgrade -y
       sudo apt-get install ufw -y
@@ -59,6 +61,8 @@ Vagrant.configure(2) do |config|
     end
       # Mit diesem abschnitt bringen wir die VM auf den eusten stand
     ws.vm.provision "shell", inline: <<-SHELL
+      sudo useradd -m wsadmin -p $(echo "asdf1234" | openssl passwd -1 -stdin)
+      sudo usermod -aG sudo wsadmin
       sudo apt-get update
       sudo apt-get upgrade -y
       sudo apt-get install ufw -y
