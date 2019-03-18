@@ -17,3 +17,12 @@ Vagrant.configure(2) do |config|
       sudo useradd -m tsadmin -p $(echo "asdf1234" | openssl passwd -1 -stdin)
       sudo usermod -aG sudo tsadmin
       sudo passwd vagrant $(echo "asdf1234")
+      #sudo apt-get update
+      #sudo apt-get upgrade -y
+      sudo apt-get install ufw -y
+      sudo ufw enable
+      sudo ufw allow from any to any  port 9987
+      sudo ufw allow from any to any  port 30033
+      sudo ufw allow from any to any  port 10011
+      sudo ufw allow from any to any  port 41144
+      SHELL
