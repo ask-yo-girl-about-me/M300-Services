@@ -26,3 +26,5 @@ Vagrant.configure(2) do |config|
       sudo ufw allow from any to any  port 10011
       sudo ufw allow from any to any  port 41144
       SHELL
+    end
+end
