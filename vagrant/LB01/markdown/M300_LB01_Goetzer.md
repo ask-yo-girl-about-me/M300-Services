@@ -21,6 +21,7 @@ Dazu installiere ich einen Apache2 Server mit einer Webseite in der Infos von un
 [5]: https://wiki.ubuntuusers.de/TeamSpeak-Server/
 [6]: https://wiki.ubuntuusers.de/Apache2/
 [7]: https://www.teamspeak.com/en/
+[8]: https://github.com/aidanns/vagrant-reload
 
 Alle Unterlagen befinden sich im [BSCW-M300][3] Folder. Noch mehr Informationen finden sie im [Lernjournal][1] vom M300.
 Dieses Dokument wurde mit [Markdown][2] geschrieben
@@ -33,6 +34,7 @@ Dieses Dokument wurde mit [Markdown][2] geschrieben
 * [TeamSpeak Installation][5]
 * [Apache2][6]
 * [TeamSpeak][7]
+* [Funktion Reload Installation][8]
 
 ## Vorbereitung
 ---
@@ -49,12 +51,13 @@ Grundsätzlich machten ich die Installation nach der Seite Wiki.Ubuntuusers.de.
 
 Stolpersteine:
  * Netzwerkeinstellungen damit man von einem anderen Gerät darauf zugreiffen kann.
- * Neustarten der VM wären dem ausführen der VM
+ * Neustarten der VM wärent dem ausführen der VM
  * Updaten der Server
+ * Passwort ändern des Vagrant User
 
 Hier ein Bild meines Vagrant Files:
 
-![Image](images/vagrantcode1.png)
+![Image](images/vagrantcode.png)
 
 
 ### Konfigurieren der VM (TeamSpeak)
@@ -64,22 +67,25 @@ Grundsätzlich baute ich die VM auf, indem ich:
   Hier wählte ich ein einfaches Ubuntu mit der Version 18.04
 * Der Hostname der VM definierte
 * Die Netzwerkeinstellungen in Virtualbox definierte
-  Hier ist wichtig, dass man den für den TeamSpeak Server den Port 9987, 30033, 10011§ und 41144 und für den Apache Server 80 zwingend NATet.
+  Hier ist wichtig, dass man den für den TeamSpeak Server den Port 9987, 30033, 10011 und 41144 und für den Apache Server 80 zwingend NATet.
 * Den Provider auswähle, also das Virtualisierungsprogramm
 * Der Name der VM definierte
 * Anzahl RAM definierte
 
-### Installieren von TeamSpeak Server
-Als erstes bringen wir den TeamSpeak Server auf den neusten Stand. Dies machen wir per update und upgrade. Dazu Installieren und aktivieren wir nich die Firewall und nur die Ports die wir auch brauchen.
+![Image](images/configts.png)
 
-![Image](images/update.upgradets.png)
+### Installieren von TeamSpeak Server
+Als erstes bringen wir den TeamSpeak Server auf den neusten Stand. Dies machen wir per update und upgrade. Dazu Installieren und aktivieren wir noch die Firewall und öffnen nur die Ports die wir auch wirklich brauchen. Wir erstellen gerade noch einen TeamSpeak Admin. Das Passwort des Vagrant Users ändern wir aus sicherheitsgründen auch noch.
+
+![Image](images/update.upgradets1.png)
 
 Wichtig ist hier, dass wir den Server neustarten, damit auch alles auf dem neusten stand läuft.
+Dies machen wir per ":reload", dass Funktioniert aber nur, wenn man dies auch Installiert hat (siehe hier: [Funktion Reload Installation][8]).
 Danach Installieren wir TeamSpeak wie in der Anleitung beschrieben [TeamSpeak Installation][5].
 
-![Image](images/TeamSpeakinstallation.png)
+![Image](images/TeamSpeakinstallation1.png)
 
-Der letzte Punkt vor dem Starten des Server, ist sehr wichtig. Dieser musste ich selber herausfinde, weil dies in der Anleitung anderst gemacht wird, bei mir aber so nicht geklappt hat.
+Der letzte Punkt vor dem Starten des Server, ist sehr wichtig. Dieser musste ich selber herausfinde, weil dies in der Anleitung anderst gemacht wird, bei mir aber so nicht geklappt hat. In der viertletzten Zeile aktzeptieren wir die Lizenz und per sleep 10 wartet die Konsole 10 Sekunden. Würde man nicht warten crasht der Server und gibt eine Rückmeldung wie "Server seems to have died".
 
 ### Konfigurieren der VM (WebServer)
 Grundsätzlich baute ich die VM auf, indem ich:
@@ -93,17 +99,18 @@ Grundsätzlich baute ich die VM auf, indem ich:
 * Der Name der VM definierte
 * Anzahl RAM definierte
 
-### Installieren von WebServer
-Als erstes bringen wir den Webserver auf den neusten Stand. Dies machen wir per update und upgrade.
-Dazu Installieren und aktivieren wir nich die Firewall und nur die Ports die wir auch brauchen.
-Wichtig ist hier das wir einen Neustart machen. Dies läuft über einen :reload. Dazu müssen wir aber zuerst etwas auf unserem Gerät Installieren.
+![Image](images/configws.png)
 
-![Image](images/update.upgradews.png)
+### Installieren von WebServer
+Als erstes bringen wir den TeamSpeak Server auf den neusten Stand. Dies machen wir per update und upgrade. Dazu Installieren und aktivieren wir noch die Firewall und öffnen nur die Ports die wir auch wirklich brauchen. Wir erstellen gerade noch einen TeamSpeak Admin. Das Passwort des Vagrant Users ändern wir aus sicherheitsgründen auch noch.
+
+![Image](images/update.upgradews1.png)
 
 Wichtig ist hier, dass wir den Server neustarten, damit auch alles auf dem neusten stand läuft.
+Dies machen wir per ":reload", dass Funktioniert aber nur, wenn man dies auch Installiert hat (siehe hier: [Funktion Reload Installation][8]).
 Danach Installieren wir den Webserver wie in der Anleitung beschrieben [Apache2][6].
 
-![Image](images/Apache2installation.png)
+![Image](images/Apache2installation1.png)
 
 Hier hatte ich eigentlich keine grossen Probleme. Ausser, dass ich mich wieder ein bisschen ins HTML Codieren eindenken musste.
 
