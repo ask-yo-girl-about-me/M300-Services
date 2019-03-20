@@ -161,3 +161,22 @@ Hier einige Bilder
 
 Hier ein Bild. Ich testete es einfach per localhost. Wenn dies auf einem externen Gerät getestet wird, muss dies mit der Server IP gemacht werden.
 ![Image](images/ws1.png)
+
+## Wichtige Befehle!!!
+---
+```
+- Virtueller Maschine einen Name geben
+  vb.name = "TeamSpeak-Server"
+- Benutzer erstellen
+  sudo useradd -m tsadmin -p $(echo "asdf1234" | openssl passwd -1 -stdin)
+- Benutzer Sudo rechte geben
+  sudo usermod -aG sudo tsadmin
+- Passwort eines Benutzers ändern
+  echo "vagrant:1234"|chpasswd
+- Firewall Installieren und konfigurieren
+  sudo apt-get install ufw -y
+  sudo ufw enable
+  sudo ufw allow from any to any  port 9987
+- Neustart einer VM
+  ts.vm.provision :reload
+```
