@@ -1,0 +1,31 @@
+Vagrant.configure(2) do |config|
+  config.vm.define "Ubuntu18.04" do |ts|
+    #Auswahl der Box, der Host Name und Ports Einstellungen der VB
+    ts.vm.box = "generic/ubuntu1804"
+    ts.vm.hostname = "Ubuntu18.04"
+    #ts.vm.network "forwarded_port", guest:Port, host:Port, auto_correct: true, protocol: "udp", host_ip: "0.0.0.0"
+    #Virtualisierungs Programm, Name und Memory der VM auswählen
+    ts.vm.provider "virtualbox" do |vb|
+      vb.name = "Ubuntu1804"
+      vb.memory = "1024"
+    end
+    #Mit diesem Schritt bringen wir die VM auf den neusten Stand
+    ts.vm.provision "shell", inline: <<-SHELL
+      sudo useradd -m lgoetzer -p $(echo "asdf1234" | openssl passwd -1 -stdin)
+      sudo usermod -aG sudo lgoetzer
+      echo "vagrant:1234"|chpasswd
+      sudo apt-get update
+      sudo apt-get upgrade -y
+      #sudo apt-get install ufw -y
+      #sudo ufw enable
+      #sudo ufw allow from any to any  port XXXX
+      SHELL
+      #Nach dem aktualisieren muss die VM reloaded werden,
+      #um einen möglichen reboot nach dem aktualisieren durchzuführen
+      ts.vm.provision :reload
+      ts.vm.provision "shell", inline: <<-SHELL
+      #Packet von Teamspeak herunterladen von einer Mirrorseite und dann gleich entpacken
+      # Software die Installiert werden muss.
+      SHELL
+    end
+  end

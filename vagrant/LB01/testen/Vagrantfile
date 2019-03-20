@@ -1,30 +1,31 @@
 Vagrant.configure(2) do |config|
-  config.vm.define "TeamSpeak" do |ts|
+  config.vm.define "LogServer" do |ls|
     #Auswahl der Box, der Host Name und Ports Einstellungen der VB
-    ts.vm.box = "generic/ubuntu1804"
-    ts.vm.hostname = "TeamSpeak"
-    ts.vm.network "forwarded_port", guest:9987, host:9987, auto_correct: true, protocol: "udp", host_ip: "0.0.0.0"
-    ts.vm.network "forwarded_port", guest:30033, host:30033, auto_correct: true, protocol: "tcp", host_ip: "0.0.0.0"
-    ts.vm.network "forwarded_port", guest:10011, host:10011, auto_correct: true, protocol: "tcp", host_ip: "0.0.0.0"
-    ts.vm.network "forwarded_port", guest:41144, host:41144, auto_correct: true, protocol: "tcp", host_ip: "0.0.0.0"
+    ls.vm.box = "generic/ubuntu1804"
+    ls.vm.hostname = "LogServer"
+    ls.vm.network "forwarded_port", guest:80, host:8081, host_ip: "0.0.0.0"
     #Virtualisierungs Programm, Name und Memory der VM auswählen
-    ts.vm.provider "virtualbox" do |vb|
-      vb.name = "TeamSpeak-Server"
+    ls.vm.provider "virtualbox" do |vb|
+      vb.name = "Log-Server"
       vb.memory = "1024"
     end
     #Mit diesem Schritt bringen wir die VM auf den neusten Stand
-    ts.vm.provision "shell", inline: <<-SHELL
-      sudo useradd -m tsadmin -p $(echo "asdf1234" | openssl passwd -1 -stdin)
-      sudo usermod -aG sudo tsadmin
+    ls.vm.provision "shell", inline: <<-SHELL
+      sudo useradd -m logadmin -p $(echo "asdf1234" | openssl passwd -1 -stdin)
+      sudo usermod -aG sudo logadmin
       echo "vagrant:1234"|chpasswd
       #sudo apt-get update
       #sudo apt-get upgrade -y
       sudo apt-get install ufw -y
-      sudo ufw enable
-      sudo ufw allow from any to any  port 9987
-      sudo ufw allow from any to any  port 30033
-      sudo ufw allow from any to any  port 10011
-      sudo ufw allow from any to any  port 41144
+      #sudo ufw enable
+      #sudo ufw allow from any to any  port 80
+      SHELL
+      #Nach dem aktualisieren muss die VM reloaded werden,
+      #um einen möglichen reboot nach dem aktualisieren durchzuführen
+      ls.vm.provision :reload
+      ls.vm.provision "shell", inline: <<-SHELL
+      #
+      sudo apt-get install webalizer -y
       SHELL
     end
 end
