@@ -59,7 +59,9 @@ Hier ein Bild meines Vagrant Files:
 
 ![Image](images/vagrantcode.png)
 
+---
 
+![Image](images/ts.png)
 ### Konfigurieren der VM (TeamSpeak)
 Grundsätzlich baute ich die VM auf, indem ich:
 * Der VM einen Name definierte
@@ -95,6 +97,10 @@ Danach Installieren wir TeamSpeak wie in der Anleitung beschrieben [TeamSpeak In
 ![Image](images/TeamSpeakinstallation1.png)
 
 Der letzte Punkt vor dem Starten des Server, ist sehr wichtig. Dieser musste ich selber herausfinde, weil dies in der Anleitung anderst gemacht wird, bei mir aber so nicht geklappt hat. In der viertletzten Zeile aktzeptieren wir die Lizenz und per sleep 10 wartet die Konsole 10 Sekunden. Würde man nicht warten crasht der Server und gibt eine Rückmeldung wie "Server seems to have died".
+
+---
+
+![Image](images/ap.png)
 
 ### Konfigurieren der VM (WebServer)
 Grundsätzlich baute ich die VM auf, indem ich:
