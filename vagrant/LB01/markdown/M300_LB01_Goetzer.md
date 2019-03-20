@@ -67,7 +67,7 @@ Grundsätzlich baute ich die VM auf, indem ich:
   Hier wählte ich ein einfaches Ubuntu mit der Version 18.04
 * Der Hostname der VM definierte
 * Die Netzwerkeinstellungen in Virtualbox definierte
-  Hier ist wichtig, dass man den für den TeamSpeak Server den Port 9987, 30033, 10011 und 41144 und für den Apache Server 80 zwingend NATet.
+  Hier ist wichtig, dass man den für den TeamSpeak Server den Port 9987, 30033, 10011 und 41144 und für den Apache Server 80 und 22/2223 zwingend NATet.
 * Den Provider auswähle, also das Virtualisierungsprogramm
 * Der Name der VM definierte
 * Anzahl RAM definierte
@@ -103,7 +103,7 @@ Grundsätzlich baute ich die VM auf, indem ich:
   Hier wählte ich ein einfaches Ubuntu mit der Version 18.04
 * Der Hostname der VM definierte
 * Die Netzwerkeinstellungen in Virtualbox definierte
-  Hier ist wichtig, dass man den für den TeamSpeak Server den Port 9987, 30033, 10011§ und 41144 und für den Apache Server 80 zwingend NATet.
+  Hier ist wichtig, dass man den für den TeamSpeak Server den Port 9987, 30033, 10011§ und 41144 und für den Apache Server 80 und 22/2223 zwingend NATet.
 * Den Provider auswähle, also das Virtualisierungsprogramm
 * Der Name der VM definierte
 * Anzahl RAM definierte
@@ -113,6 +113,7 @@ Netzwerkeinstellugnen sollten ungefair so aussehen:
 | Namen        | Protokoll | Host-IP | Host-Port | Gast-IP  | Gast-Port |
 | :-----------:|:---------:|:-------:|:---------:|:--------:|:---------:|
 | tcp8080      | tcp       | 0.0.0.0 | 8080      | -        | 80        |
+| tcp2223      | tcp       | 0.0.0.0 | 2223      | -        | 20s        |
 
 ![Image](images/configws.png)
 
