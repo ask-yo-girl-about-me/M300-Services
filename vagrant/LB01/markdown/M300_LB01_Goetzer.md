@@ -72,6 +72,15 @@ Grundsätzlich baute ich die VM auf, indem ich:
 * Der Name der VM definierte
 * Anzahl RAM definierte
 
+Netzwerkeinstellugnen sollten ungefair so aussehen:
+
+| Namen    | Protokoll | Host-IP | Host-Port | Gast-IP  | Gast-Port |
+| :-------:|:---------:|:-------:|:---------:|:--------:|:---------:|
+| tcp10011 | tcp       | 0.0.0.0 | 10011     | -        | 10011     |
+| tcp30033 | tcp       | 0.0.0.0 | 10011     | -        | 30033     |
+| tcp41144 | tcp       | 0.0.0.0 | 10011     | -        | 41144     |
+| tcp9987  | udp       | 0.0.0.0 | 10011     | -        | 9987      |
+
 ![Image](images/configts.png)
 
 ### Installieren von TeamSpeak Server
@@ -98,6 +107,12 @@ Grundsätzlich baute ich die VM auf, indem ich:
 * Den Provider auswähle, also das Virtualisierungsprogramm
 * Der Name der VM definierte
 * Anzahl RAM definierte
+
+Netzwerkeinstellugnen sollten ungefair so aussehen:
+
+| Namen        | Protokoll | Host-IP | Host-Port | Gast-IP  | Gast-Port |
+| :-----------:|:---------:|:-------:|:---------:|:--------:|:---------:|
+| tcp8080      | tcp       | 0.0.0.0 | 8080      | -        | 80        |
 
 ![Image](images/configws.png)
 
