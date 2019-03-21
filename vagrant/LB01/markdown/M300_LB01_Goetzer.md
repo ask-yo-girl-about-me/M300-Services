@@ -119,7 +119,7 @@ Netzwerkeinstellugnen sollten ungefair so aussehen:
 | Namen        | Protokoll | Host-IP | Host-Port | Gast-IP  | Gast-Port |
 | :-----------:|:---------:|:-------:|:---------:|:--------:|:---------:|
 | tcp8080      | tcp       | 0.0.0.0 | 8080      | -        | 80        |
-| tcp2223      | tcp       | 0.0.0.0 | 2223      | -        | 20s        |
+| tcp2223      | tcp       | 0.0.0.0 | 2223      | -        | 20s       |
 
 ![Image](images/configws.png)
 
