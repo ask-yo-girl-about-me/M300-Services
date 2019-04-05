@@ -54,7 +54,7 @@ cd /vagrant/teamspeak/
 ```
 3. Nun bilden wir einen Image für unsere Dienste (dies aus dem Grund, dass wir nacher mit Doker-Compose arbeiten können)
 ```
-docker build -t teamspeaklb02 .
+docker build -t tslb02 .
 ```
 
 Nun führen wir entweder das Dockerfile aus mit den nötigen Parameter (4.) oder wir führen das Docker-Compose file aus in dem die Parameter enthalten sind (5.)

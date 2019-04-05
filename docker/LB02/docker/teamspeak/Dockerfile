@@ -16,6 +16,8 @@ ARG TEAMSPEAK_URL=https://files.teamspeak-services.com/releases/server/3.7.1/tea
 
 RUN set -eux; \
 apk add --no-cache --virtual .fetch-deps tar; \
+sudo mkdir /var/ts3server; \
+sudo mkdir /opt/ts3server; \
 wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
 echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
 mkdir -p /opt/ts3server; \
@@ -25,6 +27,7 @@ apk del .fetch-deps; \
 mv /opt/ts3server/*.so /opt/ts3server/redist/* /usr/local/lib; \
 ldconfig /usr/local/lib; \
 chown -R ts3server:ts3server /opt/ts3server
+
 
 # setup directory where user data is stored
 VOLUME /var/ts3server/
