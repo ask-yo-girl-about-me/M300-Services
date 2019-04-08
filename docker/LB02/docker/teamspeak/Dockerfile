@@ -1,43 +1,23 @@
+FROM debian:jessie
 
-FROM alpine:3.7
+MAINTAINER Leandro Götzer
 
-RUN apk add --no-cache ca-certificates libstdc++ su-exec
-RUN set -eux; \
-addgroup -g 9987 ts3server; \
-adduser -u 9987 -Hh /var/ts3server -G ts3server -s /sbin/nologin -D ts3server; \
-mkdir -p /var/ts3server /var/run/ts3server; \
-chown ts3server:ts3server /var/ts3server /var/run/ts3server; \
-chmod 777 /var/ts3server /var/run/ts3server
+ENV TS_VERSION LATEST
+ENV LANG C.UTF-8
 
-ENV PATH "${PATH}:/opt/ts3server"
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install bzip2 wget ca-certificates \
+    && rm -rf /var/lib/apt/lists/* \
+    && useradd -M -s /bin/false --uid 1000 teamspeak3 \
+    && mkdir /data \
+    && chown teamspeak3:teamspeak3 /data
 
-ARG TEAMSPEAK_CHECKSUM=c82eebbe5dca9f33c8e52b0526fb92613f975c73463687e1561eefb79c0e5a69
-ARG TEAMSPEAK_URL=https://files.teamspeak-services.com/releases/server/3.7.1/teamspeak3-server_linux_alpine-3.7.1.tar.bz2
+COPY get-version.sh /get-version
+COPY start-teamspeak3.sh /start-teamspeak3
 
-RUN set -eux; \
-apk add --no-cache --virtual .fetch-deps tar; \
-sudo mkdir /var/ts3server; \
-sudo mkdir /opt/ts3server; \
-wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
-echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
-mkdir -p /opt/ts3server; \
-tar -xf server.tar.bz2 --strip-components=1 -C /opt/ts3server; \
-rm server.tar.bz2; \
-apk del .fetch-deps; \
-mv /opt/ts3server/*.so /opt/ts3server/redist/* /usr/local/lib; \
-ldconfig /usr/local/lib; \
-chown -R ts3server:ts3server /opt/ts3server
-
-
-# setup directory where user data is stored
-VOLUME /var/ts3server/
-WORKDIR /var/ts3server/
-
-#  9987 default voice
-# 10011 server query
-# 30033 file transport
 EXPOSE 9987/udp 10011 30033
 
-COPY entrypoint.sh /opt/ts3server
-ENTRYPOINT [ "entrypoint.sh" ]
-CMD [ "ts3server" ]
+USER teamspeak3
+VOLUME /data
+WORKDIR /data
+CMD ["/start-teamspeak3"]

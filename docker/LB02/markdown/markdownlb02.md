@@ -61,7 +61,7 @@ Nun führen wir entweder das Dockerfile aus mit den nötigen Parameter (4.) oder
 
 4. Dockerfile ausführen damit wir dies in userem Image haben
 ```
-docker run -p 9987:9987/udp -p 10011:10011 -p 30033:30033 -e TS3SERVER_LICENSE=accept "imagename"
+docker run -p 9987:9987/udp -p 10011:10011 -p 30033:30033 -e TS3SERVER_LICENSE=accept tslb02
 ```
 5. Nun führen wir unser Dienst aus per Docker-Compose. In diesem File sind alle nötigen Parameter vorhanden
 ```
