@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-MAINTAINER aheil
+MAINTAINER Leandro Götzer
 
 ENV TS_VERSION LATEST
 ENV LANG C.UTF-8
@@ -21,3 +21,6 @@ USER teamspeak3
 VOLUME /data
 WORKDIR /data
 CMD ["/start-teamspeak3"]
+
+#docker run -d -e TS3SERVER_LICENSE=accept -p 9987:9987/udp -p 10011:10011 -p 30033:30033 --name=ts3-server lb02
+#docker logs -f ts3-server
