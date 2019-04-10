@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.6'
 services:
   teamspeak:
     image: teamspeak
@@ -16,3 +16,9 @@ services:
       TS3SERVER_DB_NAME: teamspeak
       TS3SERVER_DB_WAITUNTILREADY: 30
       TS3SERVER_LICENSE: accept
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: teamspeak
