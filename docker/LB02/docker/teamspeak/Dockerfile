@@ -1,26 +1,21 @@
-FROM debian:jessie
+FROM alpine:latest
 
 MAINTAINER Leandro Götzer
 
-ENV TS_VERSION LATEST
-ENV LANG C.UTF-8
+ENV     TS3_VERSION=3.5.1 \
+        GLIBC_VERSION='2.27-r0'
 
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get -y install bzip2 wget ca-certificates \
-    && rm -rf /var/lib/apt/lists/* \
-    && useradd -M -s /bin/false --uid 1000 teamspeak3 \
-    && mkdir /data \
-    && chown teamspeak3:teamspeak3 /data
+RUN \
+    apk --no-cache add ca-certificates wget; \
+    wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub; \
+    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk; \
+    apk add glibc-${GLIBC_VERSION}.apk; \
+    apk add --update bzip2; \
+    rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/* /glibc-${GLIBC_VERSION}.apk; \
+    wget http://dl.4players.de/ts/releases/${TS3_VERSION}/teamspeak3-server_linux_amd64-${TS3_VERSION}.tar.bz2 -O /tmp/teamspeak.tar.bz2
 
-COPY get-version.sh /get-version
-COPY start-teamspeak3.sh /start-teamspeak3
+COPY container-files /
+
+ENTRYPOINT ["/bootstrap.sh"]
 
 EXPOSE 9987/udp 10011 30033
-
-USER teamspeak3
-VOLUME /data
-WORKDIR /data
-CMD ["/start-teamspeak3"]
-
-#docker run -d -e TS3SERVER_LICENSE=accept -p 9987:9987/udp -p 10011:10011 -p 30033:30033 --name=ts3-server lb02
-#docker logs -f ts3-server
