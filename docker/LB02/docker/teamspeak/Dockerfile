@@ -1,21 +1,39 @@
-FROM alpine:latest
+FROM alpine:3.7
 
-MAINTAINER Leandro Götzer
+RUN apk add --no-cache ca-certificates libstdc++ su-exec
+RUN set -eux; \
+ addgroup -g 9987 ts3server; \
+ adduser -u 9987 -Hh /var/ts3server -G ts3server -s /sbin/nologin -D ts3server; \
+ mkdir -p /var/ts3server /var/run/ts3server; \
+ chown ts3server:ts3server /var/ts3server /var/run/ts3server; \
+ chmod 777 /var/ts3server /var/run/ts3server
 
-ENV     TS3_VERSION=3.5.1 \
-        GLIBC_VERSION='2.27-r0'
+ENV PATH "${PATH}:/opt/ts3server"
 
-RUN \
-    apk --no-cache add ca-certificates wget; \
-    wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub; \
-    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk; \
-    apk add glibc-${GLIBC_VERSION}.apk; \
-    apk add --update bzip2; \
-    rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/* /glibc-${GLIBC_VERSION}.apk; \
-    wget http://dl.4players.de/ts/releases/${TS3_VERSION}/teamspeak3-server_linux_amd64-${TS3_VERSION}.tar.bz2 -O /tmp/teamspeak.tar.bz2
+ARG TEAMSPEAK_CHECKSUM=c82eebbe5dca9f33c8e52b0526fb92613f975c73463687e1561eefb79c0e5a69
+ARG TEAMSPEAK_URL=https://files.teamspeak-services.com/releases/server/3.7.1/teamspeak3-server_linux_alpine-3.7.1.tar.bz2
 
-COPY container-files /
+RUN set -eux; \
+ apk add --no-cache --virtual .fetch-deps tar; \
+ wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
+ echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
+ mkdir -p /opt/ts3server; \
+ tar -xf server.tar.bz2 --strip-components=1 -C /opt/ts3server; \
+ rm server.tar.bz2; \
+ apk del .fetch-deps; \
+ mv /opt/ts3server/*.so /opt/ts3server/redist/* /usr/local/lib; \
+ ldconfig /usr/local/lib; \
+ chown -R ts3server:ts3server /opt/ts3server
 
-ENTRYPOINT ["/bootstrap.sh"]
+# setup directory where user data is stored
+VOLUME /var/ts3server/
+WORKDIR /var/ts3server/
 
+#  9987 default voice
+# 10011 server query
+# 30033 file transport
 EXPOSE 9987/udp 10011 30033
+
+COPY entrypoint.sh /opt/ts3server
+ENTRYPOINT [ "entrypoint.sh" ]
+CMD [ "ts3server" ]
