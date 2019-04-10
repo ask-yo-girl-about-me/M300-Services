@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.1
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec
 RUN set -eux; \
