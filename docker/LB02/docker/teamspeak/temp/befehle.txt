@@ -1,0 +1,10 @@
+vagrant ssh
+docker-compose --version
+docker --version
+cd /vagrant/teamspeak
+ls -al
+./goetzer_tool.sh
+1
+docker image ls
+3
+4
