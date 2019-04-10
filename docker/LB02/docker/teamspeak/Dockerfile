@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-MAINTAINER Leandro Götzer
+MAINTAINER aheil
 
 ENV TS_VERSION LATEST
 ENV LANG C.UTF-8
