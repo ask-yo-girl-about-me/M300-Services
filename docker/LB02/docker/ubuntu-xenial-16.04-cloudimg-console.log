@@ -717,3 +717,60 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCok5k0XUrWVCxWCt5siKm9y3/tc/nbPpjNRQz+Vtuw
 [   23.844115] cloud-init[1412]: Cloud-init v. 18.4-0ubuntu1~16.04.2 running 'modules:final' at Wed, 10 Apr 2019 18:51:56 +0000. Up 23.51 seconds.
 [   23.844668] cloud-init[1412]: ci-info: no authorized ssh keys fingerprints found for user ubuntu.
 [   23.845539] cloud-init[1412]: Cloud-init v. 18.4-0ubuntu1~16.04.2 finished at Wed, 10 Apr 2019 18:51:57 +0000. Datasource DataSourceNoCloud [seed=/dev/sdb][dsmode=net].  Up 23.82 seconds
+[  926.004921] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[  926.004921]   Tx Queue             <0>
+[  926.004921]   TDH                  <4c>
+[  926.004921]   TDT                  <4e>
+[  926.004921]   next_to_use          <4e>
+[  926.004921]   next_to_clean        <4c>
+[  926.004921] buffer_info[next_to_clean]
+[  926.004921]   time_stamp           <100026118>
+[  926.004921]   next_to_watch        <4d>
+[  926.004921]   jiffies              <100026338>
+[  926.004921]   next_to_watch.status <0>
+[  928.010746] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[  928.010746]   Tx Queue             <0>
+[  928.010746]   TDH                  <4c>
+[  928.010746]   TDT                  <4e>
+[  928.010746]   next_to_use          <4e>
+[  928.010746]   next_to_clean        <4c>
+[  928.010746] buffer_info[next_to_clean]
+[  928.010746]   time_stamp           <100026118>
+[  928.010746]   next_to_watch        <4d>
+[  928.010746]   jiffies              <10002652e>
+[  928.010746]   next_to_watch.status <0>
+[  928.944367] e1000 0000:00:03.0 enp0s3: Reset adapter
+[  965.086925] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[  965.086925]   Tx Queue             <0>
+[  965.086925]   TDH                  <c>
+[  965.086925]   TDT                  <e>
+[  965.086925]   next_to_use          <e>
+[  965.086925]   next_to_clean        <c>
+[  965.086925] buffer_info[next_to_clean]
+[  965.086925]   time_stamp           <10002876f>
+[  965.086925]   next_to_watch        <d>
+[  965.086925]   jiffies              <100028968>
+[  965.086925]   next_to_watch.status <0>
+[  967.122307] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[  967.122307]   Tx Queue             <0>
+[  967.122307]   TDH                  <c>
+[  967.122307]   TDT                  <e>
+[  967.122307]   next_to_use          <e>
+[  967.122307]   next_to_clean        <c>
+[  967.122307] buffer_info[next_to_clean]
+[  967.122307]   time_stamp           <10002876f>
+[  967.122307]   next_to_watch        <d>
+[  967.122307]   jiffies              <100028b65>
+[  967.122307]   next_to_watch.status <0>
+[  969.151441] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[  969.151441]   Tx Queue             <0>
+[  969.151441]   TDH                  <c>
+[  969.151441]   TDT                  <e>
+[  969.151441]   next_to_use          <e>
+[  969.151441]   next_to_clean        <c>
+[  969.151441] buffer_info[next_to_clean]
+[  969.151441]   time_stamp           <10002876f>
+[  969.151441]   next_to_watch        <d>
+[  969.151441]   jiffies              <100028d60>
+[  969.151441]   next_to_watch.status <0>
+[  970.908004] e1000 0000:00:03.0 enp0s3: Reset adapter
