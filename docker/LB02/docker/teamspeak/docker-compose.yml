@@ -1,15 +1,17 @@
-version: '3.2'
+version: '3.7'
 services:
-    teamspeak:
-        build: .
-        command: /start
-        ports:
-          - "9987:9987/udp"
-          - "30033:30033"
-          - "10011:10011"
-          - "41144:41144"
-        environment:
-          - TS3SERVER_LICENSE=accept
-        volumes:
-            - ./
-        restart: always
+  tslb02:
+    image: tslb02
+    ports:
+      - "9987:9987/udp"
+      - "10012:10012"
+      - "30034:30034"
+      - "41144:41144"
+    environment:
+      - TS3SERVER_LICENSE=accept
+    volumes:
+      - ts-data:/data
+
+volumes:
+  ts-data:
+    driver: local

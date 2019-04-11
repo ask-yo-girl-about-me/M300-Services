@@ -2,7 +2,6 @@
 
 options=(
     "build" \
-    "build_hard" \
     "run" \
 	"show_logs" \
     "Quit"
@@ -12,10 +11,7 @@ options=(
 function doit {
     case "$1" in
         "build")
-            docker-compose -f docker-compose.yml build
-            ;;
-        "build_hard")
-            docker-compose -f docker-compose.yml build --force-rm --no-cache --pull
+            docker build -t tslb02 .
             ;;
         "run")
             docker-compose -f docker-compose.yml up -d
