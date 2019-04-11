@@ -1,39 +1,52 @@
-FROM alpine:3.1
+# -----------------------------------------------------------------------------
+# docker-teamspeak
+#
+# Builds a basic docker image that can run TeamSpeak
+# (http://teamspeak.com/).
+#
+# Authors: Isaac Bythewood, Jamie Tanna
+# Updated: January 6th, 2017
+# Require: Docker (http://www.docker.io/)
+# -----------------------------------------------------------------------------
 
-RUN apk add --no-cache ca-certificates libstdc++ su-exec
-RUN set -eux; \
- addgroup -g 9987 ts3server; \
- adduser -u 9987 -Hh /var/ts3server -G ts3server -s /sbin/nologin -D ts3server; \
- mkdir -p /var/ts3server /var/run/ts3server; \
- chown ts3server:ts3server /var/ts3server /var/run/ts3server; \
- chmod 777 /var/ts3server /var/run/ts3server
+# Base system is Ubuntu 16.04
+FROM   ubuntu:16.04
 
-ENV PATH "${PATH}:/opt/ts3server"
+# Set the Teamspeak version to download
+ENV TSV=3.2.0
 
-ARG TEAMSPEAK_CHECKSUM=c82eebbe5dca9f33c8e52b0526fb92613f975c73463687e1561eefb79c0e5a69
-ARG TEAMSPEAK_URL=https://files.teamspeak-services.com/releases/server/3.7.1/teamspeak3-server_linux_alpine-3.7.1.tar.bz2
+# Download and install everything from the repos.
+RUN    DEBIAN_FRONTEND=noninteractive \
+        apt-get -y update && \
+        apt-get -y install bzip2 ca-certificates && \
+        rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+        apt-get autoremove -y && \
+        apt-get clean
 
-RUN set -eux; \
- apk add --no-cache --virtual .fetch-deps tar; \
- wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
- echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
- mkdir -p /opt/ts3server; \
- tar -xf server.tar.bz2 --strip-components=1 -C /opt/ts3server; \
- rm server.tar.bz2; \
- apk del .fetch-deps; \
- mv /opt/ts3server/*.so /opt/ts3server/redist/* /usr/local/lib; \
- ldconfig /usr/local/lib; \
- chown -R ts3server:ts3server /opt/ts3server
+# Download and install TeamSpeak 3
+# Add secondary/backup server as well -- allow users to choose in case of blacklisting.
+ADD    http://dl.4players.de/ts/releases/${TSV}/teamspeak3-server_linux_amd64-${TSV}.tar.bz2 ./
+ADD    CHECKSUMS ./
+RUN    sha256sum -c CHECKSUMS
 
-# setup directory where user data is stored
-VOLUME /var/ts3server/
-WORKDIR /var/ts3server/
+RUN    tar jxf teamspeak3-server_linux_amd64-$TSV.tar.bz2 && \
+       mv teamspeak3-server_linux_amd64 /opt/teamspeak && \
+       rm teamspeak3-server_linux_amd64-$TSV.tar.bz2 && \
+       touch /vagrant/teamspeak /ts3server_license_accepted
 
-#  9987 default voice
-# 10011 server query
-# 30033 file transport
-EXPOSE 9987/udp 10011 30033
+# Load in all of our config files.
+ADD    ./scripts/start /start
 
-COPY entrypoint.sh /opt/ts3server
-ENTRYPOINT [ "entrypoint.sh" ]
-CMD [ "ts3server" ]
+# Fix all permissions
+RUN    chmod +x /start
+
+# /start runs it.
+EXPOSE 9987/udp
+EXPOSE 30033
+EXPOSE 10011
+EXPOSE 41144
+
+RUN    useradd teamspeak && mkdir /data && chown teamspeak:teamspeak /data
+VOLUME ["/data"]
+USER   teamspeak
+CMD    ["/start"]

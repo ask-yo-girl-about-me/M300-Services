@@ -65,7 +65,7 @@ docker run -p 9987:9987/udp -p 10011:10011 -p 30033:30033 -e TS3SERVER_LICENSE=a
 ```
 5. Nun führen wir unser Dienst aus per Docker-Compose. In diesem File sind alle nötigen Parameter vorhanden
 ```
-docker-compose run
+docker-compose up
 ```
 ### Konfigurieren der VM (WebServer)
 

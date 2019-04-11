@@ -8,7 +8,7 @@ options=(
     "Quit"
 )
 
-		
+
 function doit {
     case "$1" in
         "build")
