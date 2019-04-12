@@ -44,7 +44,7 @@ Netzwerkeinstellugnen sollten ungefair so aussehen:
 Wir werden den gleichen Services wie in der LB01 nehmen.
 - TeamSpeak
 
-Das ganze wird wie folgt aussehen. Für das ganze brauchen wir ein Linux System. Mit unserem Vagrantfile, dass unter LB02/docker/teamspeak/Vagrantfile liegt, werden wir unser TeamSpeak und Apache Server installieren. Dort sind alle nötigen einrichtungen gemacht die unser System braucht.
+Das ganze wird wie folgt aussehen. Für das ganze brauchen wir ein Linux System. Mit unserem Vagrantfile, dass unter LB02/docker/teamspeak/Vagrantfile liegt, werden wir unser TeamSpeak und Apache Server installieren. Dort sind alle nötigen einrichtungen gemacht die unser System braucht. Es ist wichtig, dass wir das Vagrantfile von diesem Ordner nehmem!!!!!, weil dort ist docker-compose installiert.
 
 Alle Dateien sind in diesem Repository: https://github.com/ask-yo-girl-about-me/M300-Services.git
 
@@ -69,7 +69,7 @@ Den Speicherort können Sie eigentlich selber wählen, ausser sie laden das ganz
 Ordner Herunterladen
 ![Image](bilder/ordner.png)
 ---
-1. Vagrantfile ausführen
+1. Vagrantfile (aus dem Ordner TeamSpeak!!) ausführen
 ```
 vagrant up
 ```
