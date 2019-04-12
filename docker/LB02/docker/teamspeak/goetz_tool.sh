@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Hier sind ist die Ausgabe die wir sehen, wenn wir das Bash script starten.
 options=(
     "build" \
     "run" \
@@ -7,7 +7,7 @@ options=(
     "Quit"
 )
 
-
+#Hier sind die Funktionen definiert. Dies bedeutet die Optionen die wir oben angegeben haben, haben im Hintergrund einen Befehl und diese werden hier erstellt.
 function doit {
     case "$1" in
         "build")
@@ -28,7 +28,7 @@ function doit {
             ;;
     esac
 }
-
+#Hier wird eingerichtet, wenn was passiert.
 PS3='Please enter your choice: '
 select opt in "${options[@]}"
 do

@@ -108,7 +108,7 @@ Sobald die Installation erfolgreicht durchgelaufen ist, können wir das ganze te
 
 ![Image](bilder/teamspeak.png)
 
-2. Verbindung starten
+2. Verbindung starten per localhost
 
 ![Image](bilder/teamspeak2.png)
 

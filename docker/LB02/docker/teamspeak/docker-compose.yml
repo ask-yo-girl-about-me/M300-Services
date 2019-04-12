@@ -1,14 +1,20 @@
+#Hier geben wir die Version von Docker-Compose
 version: '3.7'
+#Hier geben wir die Infos über unser Service an
 services:
   tslb02:
+    #Hier wird das Image angegeben, das wir in unserem Dockerfile builden
     image: tslb02
+    #Hier geben wir die Ports an die geöffnet werden sollten
     ports:
       - "9987:9987/udp"
       - "10012:10012"
       - "30034:30034"
       - "41144:41144"
+    #Hier akteptieren wir die TeamSpeak 3 Lizenz
     environment:
       - TS3SERVER_LICENSE=accept
+    #Dies ist unser Arbeitsordner
     volumes:
       - ts-data:/data
 
