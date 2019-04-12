@@ -30,7 +30,14 @@ Dieses Dokument wurde mit [Markdown][2] geschrieben
 
 ![Image](bilder/netzwerkplan.jpeg)
 
+Netzwerkeinstellugnen sollten ungefair so aussehen:
 
+| Namen    | Protokoll | Host-IP | Host-Port | Gast-IP  | Gast-Port |
+| :-------:|:---------:|:-------:|:---------:|:--------:|:---------:|
+| tcp10011 | tcp       | 0.0.0.0 | 10011     | -        | 10011     |
+| tcp30033 | tcp       | 0.0.0.0 | 10011     | -        | 30033     |
+| tcp41144 | tcp       | 0.0.0.0 | 10011     | -        | 41144     |
+| tcp9987  | udp       | 0.0.0.0 | 10011     | -        | 9987      |
 
 ## Vorbereitung
 ---
@@ -59,6 +66,8 @@ Den Ordner "M300-Services\docker\LB02\docker\teamspeak" müssen wir kopieren.
 Den Speicherort können Sie eigentlich selber wählen, ausser sie laden das ganze Repository herunter. Bei den Aufgaben müssen Sie dann vielleicht auf die Pfade achten, diese könnten dan vielleicht nicht mehr stimmen. Ich gehe immer vom teamspeak Ordner aus!!!!
 
 ## Installations Ablauf
+Ordner Herunterladen
+![Image](bilder/ordner.png)
 ---
 1. Vagrantfile ausführen
 ```
@@ -102,6 +111,9 @@ docker run -d -e TS3SERVER_LICENSE=accept -p 9987:9987/udp -p 10011:10011 -p 300
 ```
 docker-compose up -d
 ```
+
+## Code
+Der Code haben ich auskommentiert. Somit sieht man welche Zeile für was steht.
 
 ## Testing
 Sobald die Installation erfolgreicht durchgelaufen ist, können wir das ganze testen. Dies wir per TeamSpeak3 Client auf einem Client getestet. Dafür muss man TeamSpeak3 Installieren.
