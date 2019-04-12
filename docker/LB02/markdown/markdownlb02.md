@@ -1,8 +1,8 @@
-# LB01 von Leandro Götzer
+# LB02 von Leandro Götzer
 
 ## Auftrag
 ---
-
+Container as a Service
 
 ### Meine Idee für die LB01
 
@@ -13,8 +13,7 @@
 [3]: https://bscw.tbz.ch/bscw/bscw.cgi/25833849
 [4]: https://github.com/ask-yo-girl-about-me/M300-Services.git
 [5]: https://docs.docker.com/samples/library/teamspeak/
-[6]: https://hub.docker.com/_/httpd
-[7]: https://docs.docker.com/compose/install/
+[6]: https://docs.docker.com/compose/install/
 
 Alle Unterlagen befinden sich im [BSCW-M300][3] Folder. Noch mehr Informationen finden sie im [Lernjournal][1] vom M300.
 Dieses Dokument wurde mit [Markdown][2] geschrieben
@@ -25,8 +24,7 @@ Dieses Dokument wurde mit [Markdown][2] geschrieben
 * [BSCW][3]
 * [Mein Repository][4]
 * [TeamSpeak Installation][5]
-* [Apache Installation][6]
-* [Docker Compose][7]
+* [Docker Compose][6]
 
 ## Netzwerkplan
 
