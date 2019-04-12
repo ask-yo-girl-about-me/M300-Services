@@ -28,7 +28,7 @@ Dieses Dokument wurde mit [Markdown][2] geschrieben
 
 ## Netzwerkplan
 
-![Image](bilder/netzwerkplan.jpeg)
+![Image](bilder/netzwerkplan1.png)
 
 Netzwerkeinstellugnen sollten ungefair so aussehen:
 
